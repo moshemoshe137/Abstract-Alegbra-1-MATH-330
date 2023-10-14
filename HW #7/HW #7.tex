@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[twoside, margin=1cm]{geometry}
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace} %for Double Spacing
+\usepackage{breqn}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{pgfplots}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Exercise}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\inv}[1]{#1^{-1}}
+\setcounter{section}{6}
+
+%\onehalfspacing
+\begin{document}
+	\begin{flushright}
+		Moshe Mason Rubin\\MATH 330 Homework \#7\\19 October 2016
+	\end{flushright}
+	
+	\setcounter{theorem}{6}
+	\begin{theorem}
+		Verify Euler's Theorem for $n=15$ and $a=4$.
+	\end{theorem}
+	\begin{proof}[Solution]
+		Because $\gcd\left(15,4\right)=1$, we may apply Euler's Theorem that $a^{\phi\left(n\right)}\equiv 1 \pmod{n}$. 
+		\begin{dgroup*}
+		\begin{dmath*}
+			\phi\left(15\right)={\#\left\{x\in\left(\left[1,15\right)\cap\Z\right) | \gcd\left(x,15\right)=1\right\}} = {\#\left\{1,2,4,7,8,11,13,14\right\}} = 8
+		\end{dmath*}
+		\begin{dsuspend}
+			and
+		\end{dsuspend}
+		\begin{dmath*}
+			4^{8} = 4^{2^3} \equiv 1 \condition[]{as $4^{2^0}\equiv 4 \implies 4^{2^1}\equiv 1 \implies  4^{2^2}\equiv 4 \implies 4^{2^3}\equiv 1$}
+		\end{dmath*}
+		\end{dgroup*}
+		So Euler's Theorem holds for $n=15$ and $a=4$. \checkmark 
+	\end{proof}
+
+	\begin{theorem}
+		Use Fermat's Little Theorem to show that if $p=4n+3$ is prime, there is no solution to the equation ${x^2\equiv -1\pmod{p}}$.
+	\end{theorem}
+	\begin{proof}
+		Notice $x\in\left[\left(\Z/p\Z\right)\setminus\left\{0\right\}\right]$ and $x^2\equiv-1\pmod{p}\implies x^4\equiv1\pmod{p}$. \\
+		If $x\equiv1$ then $x^2\equiv1$ and $x^2\equiv-1$, so $1\equiv-1\implies 2\equiv0\implies p=2=4n+3$, which is a contradiction. So $x\not\equiv 1$ and $x^2\not\equiv 1$, so $|x|=4$.\\
+		Since $|x|=4$ and $x\in\left[\left(\Z/p\Z\right)\setminus\left\{0\right\}\right]$, we have $4$ divides $\left|G\right|$, where clearly $|G|=p-1$. So $4|p-1\implies 4|\left(4n+3\right)-1\implies 4|4n+2$ which is a contradiction. Therefore there is no $x\in\left[\left(\Z/p\Z\right)\setminus\left\{0\right\}\right]$ such that $x^2\equiv -1\pmod{p}$.
+	\end{proof}
+
+	\setcounter{theorem}{10}
+	\begin{theorem}
+		Let $H$ be a sub-group of $G$ and suppose that $g_1\cdot g_2\in G$. Prove that the following conditions are equivalent.
+		\begin{multicols}{5}
+			\begin{enumerate}[(a)]
+			\item $g_1H=g_2H$
+			\item $H\inv{g_1}=H\inv{g_2}$
+			\item $g_1H\subseteq g_2H$
+			\item $g_2\in g_1H$
+			\item $\inv{g_1}g_2\in H$
+		\end{enumerate}
+		\end{multicols}
+	\end{theorem}
+	\begin{proof}
+		\begin{description}
+			\item[$\mathbf{(a)\iff (b)}$:]  
+			\begin{dmath}
+			\label{a iff b}
+				{g_1H = g_2H} \iff {g_1\sim_{H,L}g_2} \condition{as $\left[x\right]_{\sim_{H,L}}=xH$}\iff {\inv{g_1}g_2\in H} \condition[]{by definition of $\sim_{H,L}$} \iff {\inv{g_1}\sim_{H,R}\inv{g_2}} \condition[]{by definition of $\sim_{H,R}$} \iff {H\inv{g_1} = H\inv{g_2}} \condition{as $\left[x\right]_{\sim_{H,R}}=Hx$}
+			\end{dmath} So $g_1H = g_2H\iff H\inv{g_1} = H\inv{g_2}$.\qed
+			
+			\item[$\mathbf{(a)\implies (d)}$:] \[g_1H=g_2H \text{ and } g_2\in g_2H\implies g_2\in g_1H \hfill\qed\]
+			
+			\item[$\mathbf{(c)\iff(a)}$:] \begin{dmath*}
+				{g_1H\subseteq g_2H} \iff {g_1\in g_2H} \condition[]{by $\mathbf{(d)}$} \iff {g_1=g_2h} \condition[]{for some $h$ in $H$} \iff {\inv{g_2}g_1\in H} \iff {g_1\sim_{H,L}g_2} \condition[]{by definition of $\sim_{H,L}$ and fact that $\sim_{H,L}$ is symmetric} \iff {g_1H=g_2H} \condition{as $\left[x\right]_{\sim_{H,R}}=Hx$}
+			\end{dmath*} So $g_1H\subseteq g_2H \iff g_1H=g_2H$.\qed
+		
+			\item[$\mathbf{(a)\iff(c)}$:] I kind of think of this as the definition, through a proof is given in \eqref{a iff b}. \qedhere
+		\end{description}
+		%\renewcommand{\qedsymbol}{}
+	\end{proof}
+
+	\setcounter{theorem}{16}
+	\begin{theorem}
+		Suppose that $\left[G:H\right]=2$. If $a$ and $b$ are not in $H$, show that $ab\in H$.
+	\end{theorem}
+	\begin{proof}
+		Clearly $id\in H$ as $H$ is a sub-group. Let $H=\left\{h_1,\ldots,h_n,id\right\}$ such that $a,b\not\in H$. Consider $aH=\left\{ah_1,\ldots,ah_n,a\right\}$. Since $\left[G:H\right]=2$ we have that $aH=G\setminus H$ by theorem from class. Clearly $ab\not\in aH$ as $ah_i\not=ab$ for any $i$ by assumption that $b\not\in H$. So $ab\not\in G\setminus H\implies ab\in H$ (as $ab$ must be in $G$ because $G$ is closed).
+	\end{proof}
+
+	\setcounter{theorem}{19}
+	\begin{theorem}
+		Let $H$ and $K$ be sub-groups of a group $G$. Define a relation $\sim$ on $G$ by $a\sim b$ if there exists an $h\in H$ and a $k\in K$ such that $hak=b$. Show that this relation is an equivalence relation. The corresponding equivalence classes are \textit{\textbf{double co-sets}}. Compute the double co-sets of $H=\left\{(1),(123),(132)\right\}$ in $A_4$.
+	\end{theorem}
+	\begin{proof}\hfill
+		\begin{description}
+			\item[Reflexive:] As $H$ and $K$ are sub-groups, clearly $id\in H$ and $id\in K$. So let $h=k=id$. Then $id\cdot a\cdot id=a$, so $\sim$ is reflexive. \checkmark
+			
+			\item[Symmetric:] Because they are sub-groups, $H$ and $K$ are closed under inverses. So
+			\begin{dmath*}
+				{a\sim b\iff hak=b} \iff {ak=\inv{h}b} \condition[]{by left multiplying by $\inv{h}$, as $\inv{h}\in H$} \iff {a=\inv{h}b\inv{k}} \condition[]{by left multiplying by $\inv{k}$, as $\inv{k}\in k$} \iff {b\sim a}
+			\end{dmath*} So $a\sim b\iff b\sim a$, so $\sim$ is symmetric. \checkmark
+		
+			\item[Transitive:] $a\sim b$ and $b\sim c$ means there exists $h_1,h_2\in H$ and $k_1,k_2\in K$ such that $h_1ak_1=b$ and $h_2bk_2=c$. So 
+			\begin{dmath*}
+				{a\sim b\text{ and } b\sim c} \iff {h_1ak_1=b\text{ and }h_2bk_2=c}	\implies {h_2\left(h_1ak_1\right)k_2=c} \condition[]{by substitution} \implies {\left(h_2h_1\right)a\left(k_1k_2\right)=c} \condition[]{by associativity in groups} \iff {a\sim c} \condition[]{as $h_2h_1\in H$ and $k_1k_2\in H$}
+			\end{dmath*} So $a\sim b$ and $b\sim c\implies a\sim c$, so $\sim$ is transitive. \checkmark 
+		\end{description}
+		So $\sim$ is an equivalence relation. So for $x\in G$, 
+		\begin{dmath*}
+			{\left[x\right]}:\nolinebreak={\left\{y\in G \text{ such that } x\sim y\right\}} = {\left\{y\in G\text{ such that } hxk=y\text{ for some } h\in H,k\in K\right\}} = {\left\{hxk\text{ for some } h\in H,k\in K\right\}}
+		\end{dmath*} So the double co-sets of $H=\left\{(1),(123),(132)\right\}$ in $A_4$ are
+		\begin{dgroup*}
+		\begin{dmath*}
+			H(1)H = \left\{h_1h_2|h_1,h_2\hiderel{\in} H\right\} = \left\{(1),(123),(132)\right\}
+		\end{dmath*}
+		\begin{dsuspend}
+			and
+		\end{dsuspend}
+		\begin{dmath*}
+			H(234)H= \left\{h_1(234)h_2|h_1,h_2\hiderel{\in} H\right\} = \left\{(234),(234)(123),(234)(132),(123)(234),(123)(234)(123),(123)(234)(132),(132)(234),(132)(234)(123),(132)(234)(132)\right\} = \left\{(234)(13)(24),(142),(12)(34),(243),(143),(134),(124),(14)(23)\right\} \hiderel{=} A_4\setminus H\hfill\qedhere
+		\end{dmath*}
+		\end{dgroup*}
+	\end{proof}
+
+	\setcounter{section}{9}
+	\setcounter{theorem}{1}
+	\begin{theorem}
+		Prove that $\C^*$ is isomorphic to the sub-groups of $GL_2\left(\R\right)$ consisting of matrices of the form \[\begin{bmatrix}
+		a & b \\ 
+		-b & a
+		\end{bmatrix}\]
+	\end{theorem}
+	\begin{proof}
+		Let $\phi:\C^*\to\left\{\left[\begin{smallmatrix}a & b \\ -b & a\end{smallmatrix} \right]|a^2+b^2\not=0\right\}$ be given be $a+bi\mapsto \left[\begin{smallmatrix}a & b \\ -b & a\end{smallmatrix} \right]$. Then $\phi$ forms a bijection between the sets $\C^*$ and $\left\{\left[\begin{smallmatrix}a & b \\ -b & a\end{smallmatrix} \right]|a^2+b^2\not=0\right\}$.\\
+		To show the group operations are conserved, I will show $\phi(a+bi)\cdot\phi(c+di)=\phi\left((a+bi)\times(c+di)\right)$ where $\cdot$ is matrix multiplication and $\times$ is complex multiplication. So
+		\begin{dmath*}
+			\phi\left(a+bi\right)\cdot\phi\left(c+di\right) = \begin{bmatrix} a & b \\ -b & a	\end{bmatrix}\cdot\begin{bmatrix}c & d \\-d & c \end{bmatrix} \condition[]{by definition of $\phi:\C^*\to\left\{\left[\begin{smallmatrix}a & b \\ -b & a\end{smallmatrix} \right]|a^2+b^2\not=0\right\}$} = \begin{bmatrix}	ac-bd & ad+bc \\ -\left(ad+bc\right) & ac-bd\end{bmatrix} \condition[]{by matrix multiplication} = \phi\left((ac-bd)+(ad+bc)i\right) \condition[]{by definition of $\phi:\C^*\to\left\{\left[\begin{smallmatrix}a & b \\ -b & a\end{smallmatrix} \right]|a^2+b^2\not=0\right\}$} = \phi\left((a+bi)\times(c+di)\right)
+		\end{dmath*} So $\phi(a+bi)\cdot\phi(c+di)=\phi\left((a+bi)\times(c+di)\right)$. So $\left(C^*,\times\right)\simeq\left(\left\{\left[\begin{smallmatrix}a & b \\ -b & a\end{smallmatrix} \right]|a^2+b^2\not=0\right\},\cdot\right)$. 
+	\end{proof}
+
+	\setcounter{theorem}{11}
+	\begin{theorem}
+		Prove that $S_4$ is not isomorphic to $D_{12}$. 
+	\end{theorem}
+	\begin{proof}
+		Although $S_4$ and $D_{12}$ each have $24$ elements, by Theorem 5.10, there exists $r\in D_{12}$ with $|r|=12$, but no such element in $S_4$ as $|s|\leq 4$ for all $s\in S_4$. 
+	\end{proof}
+
+
+
+\end{document}

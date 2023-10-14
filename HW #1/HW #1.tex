@@ -1,0 +1,244 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[margin=1cm]{geometry}
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{breqn}
+\usepackage{enumerate}
+
+\doublespacing
+
+\begin{document}
+	\begin{flushright}
+		Moshe Mason Rubin\\MATH 330 Homework \#1\\2 September 2016
+	\end{flushright}
+	\begin{description}
+		\item[1.1 ] 
+			\begin{enumerate}[(a)]
+				\item $A\cap B=\left\{2\right\}$ as $2$ is the only even prime number in $\mathbb{N}$.
+				\item $A\cup B=\left\{2,3,4,5,6,7,8,10,\cdots\right\}=\left\{x:x\in\mathbb{N} \text{ and }\left(\text{$x$ is prime or $x$ is even}\right)\right\}$.
+				\item $B\cap C=\left\{5\right\}$ as $5$ is the only multiple of $5$ that is prime.
+				\item $A\cap\left(B\cup C\right)=\left\{2,10,20,30,\cdots\right\}=\left\{2, 10x:x\in\mathbb{N}\right\}$ as $B\cup C$ is a set containing all multiples of $5$ and all prime numbers, so $A\cap\left(B\cup C\right)$ is the set of all \textit{even} multiples of $5$ and all \textit{even} prime numbers. 
+			\end{enumerate}
+		
+		\item[1.17] $f:\mathbb{Q}\to\mathbb{Q}$ is a mapping if for every $a\in\mathbb{Q}$ there exists a unique $b\in\mathbb{Q}$ such that $f(a)=b$. 
+			\begin{enumerate}[(a)]
+				\item $f\left(p/q\right)=\frac{p+1}{p-2}$ is not a mapping because $\frac{1}{2}=\frac{3}{6}$ but $f\left(\frac{1}{2}\right)=\frac{2}{-1}=-2$ and $f\left(\frac{3}{6}\right)=\frac{4}{1}=4$. 
+				\item $f\left(p/q\right)=\frac{3p}{3q}$ is a mapping because for all $\frac{p}{q},\frac{r}{s}\in\mathbb{Q}$, $\frac{p}{q}=\frac{r}{s}\implies f\left(p/q\right)=f\left(r/s\right)$ as $f\left(p/q\right)=\frac{3p}{3q}=\frac{p}{q}=\frac{r}{s}=\frac{3r}{3s}=f\left(r/s\right)$.\qed
+				\item $f\left(p/q\right)=\frac{p+q}{q^2}$ is not a mapping because $\frac{1}{2}=\frac{2}{4}$ but $f\left(\frac{1}{2}\right)=\frac{3}{2^2}=\frac{3}{4}$ but $f\left(\frac{2}{4}\right)=\frac{6}{4^2}=\frac{3}{8}$.
+				\item $f\left(p/q\right)=\frac{3p^2}{7q^2}-\frac{p}{q}$ is a mapping because for all $\frac{p}{q},\frac{r}{s}\in\mathbb{Q}$, $\frac{p}{q}=\frac{r}{s}\implies f\left(p/q\right)=f\left(r/s\right)$ as $f\left(p/q\right)=\frac{3p^2}{7q^2}-\frac{p}{q}=\frac{3}{7}\left(\frac{p}{q}\right)^2-\frac{p}{q}=\frac{3}{7}\left(\frac{r}{s}\right)^2-\frac{r}{s}=\frac{3r^2}{7s^2}-\frac{r}{s}=f\left(r/s\right)$.\qed
+			\end{enumerate}
+			
+		\item[1.19] By Theorem 1.4, $f:A\to B$ and $g:B\to C$ are both bijective because they are both invertible. By Theorem 1.3.4, because $f$ and $g$ are bijective, so $g\circ f:A\to C$ is bijective and by Theorem 1.4, it is invertible. So there exists a unique $\left(g\circ f\right)^{-1}:C\to A$ such that $\left(g\circ f\right)^{-1}\circ\left(g\circ f\right)=\mbox{id}_A$ and $\left(g\circ f\right)\circ \left(g\circ f\right)^{-1}=\mbox{id}_C$.\\
+		Notice that by Theorem 1.3.1, the assumption that $f$ and $g$ are invertible, and because $\mbox{id}_B\circ f=f$, $\left(f^{-1}\circ g^{-1}\right)\circ\left(g\circ f\right)=f^{-1}\circ\left(g^{-1}\circ g\right)\circ f=f^{-1}\circ\left(\mbox{id}_B\circ f\right)=f^{-1}\circ f=\mbox{id}_A$. By the same reasoning, $\left(g\circ f\right)\circ\left(f^{-1}\circ g^{-1}\right)=g\circ\left(f\circ f^{-1}\right)\circ g^{-1}=\left(g\circ\mbox{id}_B\right)\circ g^{-1}=g\circ g^{-1}=\mbox{id}_C$. So $f^{-1}\circ g^{-1}$ is the unique function $\left(g\circ f\right)^{-1}$ from above and $f^{-1}\circ g^{-1}=\left(g\circ f\right)^{-1}$.\qed
+		
+		\item[1.25]
+			\begin{enumerate}[(a)]
+				\item $x\sim y$ in $\mathbb{R}$ if $x\geq y$ is not an equivalence because it is not symmetric. For example, $10\sim5$ but $5\not\sim10$.
+				\item $m\sim n$ in $\mathbb{Z}$ if $mn>0$ is an equivalence relation as for all $m\in\mathbb{Z}$, $m\sim m$, $m\sim n\implies n\sim m$, and $m\sim n$ and $n\sim l\implies m\sim l$. This relation describes the first and fourth quadrants of the Cartesian plane (excluding $x=0$ and $y=0$). 
+				\item $x\sim y$ in $\mathbb{R}$ if $|x-y|\leq4$ is not an equivalence relationship because it is not transitive. For example, $1\sim3$ and $3\sim 7$ but $1\not\sim7$.  
+				\item $m\sim n$ in $\mathbb{Z}$ if $m\equiv n \left(\bmod6\right)$ is an equivalence relation. It describes the equivalence class $\mathbb{Z}/\left(\bmod6\right):=\left\{\left[x\right]_{\bmod6}:x\in\mathbb{Z}\right\}$ where $\left[x\right]_{\bmod 6}:=\left\{y\in\mathbb{Z}|y\equiv x\left(\bmod6\right)\right\}$. 
+			\end{enumerate}
+		
+		\item[2.1] $\displaystyle\sum_{k=1}^n {k^2}=\frac{n\left(n+1\right)\left(2n+1\right)}{6}$
+			\begin{description}
+				\item[Base case: $\mathbf{n=1}\to$] $\displaystyle\sum_{k=1}^1 {k^2}=1^2=1$ and $\frac{1\left(1+1\right)\left(2*1+1\right)}{6}=\frac{1*2*3}{6}=1$ \checkmark
+				\item[Inductive step: Assume $\displaystyle\mathbf{\sum_{k=1}^n {k^2}=\frac{n\left(n+1\right)\left(2n+1\right)}{6}}$ and show $\displaystyle\mathbf{\sum_{k=1}^{n+1} {k^2}=\frac{\left(n+1\right)\left[\left(n+1\right)+1\right]\left(2\left[n+1\right]+1\right)}{6}}$.] 
+				\begin{dmath*}
+					\sum_{k=1}^{n+1} {k^2}=\sum_{k=1}^n {k^2} +\left(n+1\right)^2=\frac{n(n+1)(2n+1)}{6}+n^2+2n+1 \quad\text{ by inductive hypothesis }={\frac{(n^2+n)(2n+1)}{6}+n^2+2n+1=\frac{2n^3+n^2+2n^2+n}{6}+n^2+2n+1}=\frac{2n^3+3n^2+n}{6}+\frac{6n^2+12n+6}{6}=\frac{2n^3+9n^2+13n+6}{6}=\frac{(n+1)(n+2)(2n+3)}{6}=\frac{\left(n+1\right)\left[\left(n+1\right)+1\right]\left(2\left[n+1\right]+1\right)}{6}
+				\end{dmath*}
+				So, by induction, for all $n\in\mathbb{N}$, $\displaystyle\sum_{k=1}^n {k^2}=\frac{n\left(n+1\right)\left(2n+1\right)}{6}$.\qed
+			\end{description}
+		\item [2.15]
+			\begin{enumerate}[(a)]
+				\item 14 and 39
+				\begin{enumerate}[(i)]
+					\item
+					$\begin{array}{ccc}
+					39=14q+r	&\to  &39=14(2)+11  \\ 
+					14=11q+r	&\to  &14=11(1)+3  \\ 
+					11=3q+r	&\to  &11=3(3)+2  \\  
+					3=2q+r	&\to  &3=2(1)+\mathbf{1} \\
+					2=1q+r	&\to	&2=1(2)+0
+					\end{array}$ \\ So $\gcd{(14,39)}=1$.\\ \noindent\rule{10cm}{0.4pt}
+					 
+					
+					\item$\begin{array}{ccccc}
+						3=2(1)+1&  \implies&  3-2(1)=1&  \to&  3-(11-3\cdot3)=1\\ 
+						&  &  4\cdot3-11=1&  \to&  4(14-11)-11=1\\ 
+						&  &  4(14)-5(11)=1&  \to&  4(14)-5(39-14\cdot2)\\ 
+						&  &  14(\mathbf{14})-5(\mathbf{39})=1&  & 
+					\end{array}$ \\ So $(r,s)\in\mathbb{Z}^2$ such that $\gcd(14,39)=14r+39s$ is $(r,s)=(14,-5)$.  
+				\end{enumerate}
+			\item 234 and 165
+			\begin{enumerate}[(i)]
+				\item
+				$\begin{array}{ccc}
+					234=165q+r&  \to&  234=165(1)+69\\ 
+					165=69q+r&  \to&  165=69(2)+27\\ 
+					69=27q+r&  \to&  69=27(2)+15\\ 
+					27=15q+r&  \to&  27=15(1)+12\\ 
+					15=12q+r&  \to&  15=12(1)+\mathbf{3}\\ 
+					12=3q+r&  \to& 12=3(4)+0
+				\end{array}$  \\ So $\gcd{(234,165)}=3$.\\ \noindent\rule{10cm}{0.4pt}
+				
+				
+				\item$\begin{array}{ccccc}
+				15=12(1)+3&  \implies&  3=15-12&  \to&  3=15-(27-15)\\ 
+				&  &  3=2(15)-27&  \to&  3=2(69-2\cdot27)-27\\ 
+				&  &  3=2(69)-5(27)&  \to&  3=2(69)-5(165-2\cdot69)\\ 
+				&  &  3=12(69)-5(165)&  \to&  3=12(234-165)-5(165)\\ 
+				&  &  3=12\left(\mathbf{234}\right)-17\left(\mathbf{165}\right)&  & 
+				\end{array} $ \\ So $(r,s)\in\mathbb{Z}^2$ such that $\gcd(234,165)=234r+165s$ is $(r,s)=(12,-17)$.  
+			\end{enumerate}
+		\item 1739 and 9923
+		\begin{enumerate}[(i)]
+			\item
+			$\begin{array}{ccc}
+			9923=1739q+r&  \to&  9923=1739(5)+1228\\ 
+			1739=1228q+r&  \to&  1739=1228(1)+511\\ 
+			1228=511q+r&  \to&  1228=511(2)+206\\ 
+			511=206q+r&  \to&  511=206(2)+99\\ 
+			206=99q+r&  \to&  206=99(2)+8\\ 
+			99=8q+r&  \to&  99=8(12)+3\\ 
+			8=3q+r&  \to&  8=3(2)+2\\ 
+			3=2q+r&  \to&  3=2(1)+\mathbf{1}\\ 
+			2=1q+r&  \to& 2=1(2)+0
+			\end{array} $  \\ So $\gcd{(1739,9923)}=1$.\\ \noindent\rule{10cm}{0.4pt}
+			
+			
+			\item$\begin{array}{ccc}
+			1=3-2&  \to&  1=3-(8-2\cdot3)\\ 
+			1=3\cdot3-8&  \to&  1=3(99-12\cdot8)-8\\ 
+			1=3\cdot99-37\cdot8&  \to&  1=3\cdot99-37(206-2\cdot99)\\ 
+			1=77\cdot99-37\cdot206&  \to&  1=77(511-2\cdot206)-37\cdot206\\ 
+			1=77\cdot511-191\cdot206&\to  &  1=77\cdot511-191(1228-2\cdot511)\\ 
+			1=459\cdot511-191\cdot1228&  \to&  1=459(1739-1228)-191\cdot1228\\ 
+			1=459\cdot1739-650\cdot1228&  \to&  1=459\cdot1739-650(9923-5\cdot1739)\\ 
+			1=3709\left(\mathbf{1739}\right)-650\left(\mathbf{9923}\right)&  & 
+			\end{array} $ \\ So $(r,s)\in\mathbb{Z}^2$ such that $\gcd(1739,9923)=1739r+9923s$ is $(r,s)=(3709,-650)$.  
+		\end{enumerate}
+		\item 471 and 562
+		\begin{enumerate}[(i)]
+			\item
+			$\begin{array}{ccc}
+			562=471q+r&  \to&  562=471(1)+91\\ 
+			471=91q+r&  \to&  471=91(5)+16\\ 
+			91=16q+r&  \to&  91=16(5)+11\\ 
+			16=11q+r&  \to&  16=11(1)+5\\ 
+			11=5q+r&  \to&  11=5(2)+\mathbf{1}\\ 
+			5=1q+r&  \to& 5=1(5)+0
+			\end{array} $  \\ So $\gcd{(471,562)}=1$.\\ \noindent\rule{10cm}{0.4pt}
+			
+			
+			\item$\begin{array}{ccc}
+			1=11-2\cdot5& \to &  1=11-2(16-11)\\ 
+			1=3\cdot11-2\cdot16&  \to&  1=3(91-5\cdot16)-2\cdot16\\ 
+			1=3\cdot91-17\cdot16&  \to&  1=3\cdot91-17(471-5\cdot91)\\ 
+			1=88\cdot91-17\cdot471&  \to&  1=88(562-471)-17\cdot471\\ 
+			1=88(\mathbf{562})-105\left(\mathbf{471}\right)&  & 
+			\end{array} $ \\ So $(r,s)\in\mathbb{Z}^2$ such that $\gcd(562,471)=562r+471s$ is $(r,s)=(88,-105)$.  
+		\end{enumerate}
+		
+		\item 23,771 and 19,945
+			\begin{enumerate}[(i)]
+					\item
+					$\begin{array}{ccc}
+					23771=19945q+r&\to  &  23771=19945(1)+3826\\ 
+					19945=3826q+r&\to  &  19945=3826(5)+815\\ 
+					3826=815q+r&  \to&  3826=815(4)+566\\ 
+					815=566q+r&  \to&  815=566(1)+249\\ 
+					566=249q+r& \to &  566=249(2)+68\\ 
+					249=68q+r&\to  &  249=68(3)+45\\ 
+					68=45q+r& \to &  68=45(1)+23\\ 
+					45=23q+r&  \to& 45=23(1)+22\\
+					23=22q+r&	\to&	23=22(1)+\mathbf{1}\\
+					22=1q+r	&	\to&	22=1(22)+0
+					\end{array} $  \\ So $\gcd{(23771,19945)}=1$.\\ \noindent\rule{10cm}{0.4pt}
+					
+					
+					\item$\begin{array}{ccc}
+					1=23-22&  \to&  1=23-(45-23)\\ 
+					1=2\cdot23-45& \to &  1=2(68-45)-45\\ 
+					1=2\cdot68-3\cdot45& \to &  1=2\cdot68-3(249-3\cdot68)\\ 
+					1=11\cdot68-3\cdot249& \to &  1=11(566-2\cdot249)-3\cdot249\\ 
+					1=11\cdot566-25\cdot249&	\to&	1=11\cdot566-25(815-566)\\
+					1=36\cdot566-25\cdot815& \to &  1=36(3826-4\cdot815)-25\cdot815\\ 
+					1=36\cdot2836-169\cdot815& \to &  1=36\cdot3826-169(19945-5\cdot3826)\\ 
+					1=881\cdot3826-169\cdot19945& \to &  1=881(23771-19945)-169\cdot19945\\ 
+					1=811(\mathbf{23771})-1050(\mathbf{19945})
+					\end{array}  $ \\ So $(r,s)\in\mathbb{Z}^2$ such that $\gcd(23771,19945)=23771r+19945s$ is $(r,s)=(881,-1050)$.  
+ 		\end{enumerate}	
+			\item -4357 and 3754
+				\begin{enumerate}[(i)]
+					\item
+					$\begin{array}{ccc}
+					4357=3754q+r&  \to&  4357=3754(1)+603\\ 
+					3754=603q+r&  \to&  3754=603(6)+136\\ 
+					603=136q+r&  \to&  603=136(4)+59\\ 
+					136=59q+r&  \to&  136=59(2)+18\\ 
+					59=18q+r&  \to&  59=18(3)+5\\ 
+					18=5q+r&  \to&  18=5(3)+3\\ 
+					5=3q+r& \to &5=3(1)+2  \\ 
+					3=2q+r&  \to&  3=2(1)+\mathbf{1}\\ 
+					2=1q+r&  \to& 2=1(2)+0
+					\end{array} $  \\ So $\gcd{(-4357,3754)}=1$.\\ \noindent\rule{10cm}{0.4pt}
+					
+					
+					\item$\begin{array}{ccc}
+					1=3-2&\to  &1=3-(5-3)  \\ 
+					1=2\cdot3-5&  \to&  1=2(18-3\cdot5)-5\\ 
+					1=2\cdot18-7\cdot5&\to  &  1=2\cdot18-7(59-3\cdot18)\\ 
+					1=23\cdot18-7\cdot59& \to &  1=23(136-2\cdot59)-7\cdot59\\ 
+					1=23\cdot136-53\cdot59&\to  & 1=23\cdot136-53(603-4\cdot136) \\ 
+					1=235\cdot136-53\cdot603& \to &1=235(3754-6\cdot603)-53\cdot603  \\ 
+					1=235\cdot3754-1463\cdot603& \to &1=235\cdot3754-1463(4357-3754)  \\ 
+					1=1698(\mathbf{3754})-1463(\mathbf{4357})& \iff & 1=1698(\mathbf{3754})+1463(\mathbf{-4357})
+					\end{array}  $ \\ So $(r,s)\in\mathbb{Z}^2$ such that $\gcd(3754,-4357)=3754r+(-4357)s$ is $(r,s)=(1698,1463)$.  
+				\end{enumerate}		
+			
+			\end{enumerate}
+		\item[2.17]
+		\begin{enumerate}[(a)]
+			\item Prove that $f_n<2^n$.
+			\begin{description}
+				\item[Base case: $\mathbf{n=1}\to$] $f_1=1<2^1$. \checkmark
+				\item[Base case: $\mathbf{n=2}\to$] $f_2=1<2^2$. \checkmark 
+				\item[Inductive step: Assume $\mathbf{f_{n-1}<2^{n-1}}$ and $\mathbf{f_n<2^n}$ and show that $\mathbf{f_{n+1}<2^{n+1}}$.]
+				\begin{dmath*}
+					{f_{n+1}=f_{n-1}+f_n\text{ and } f_{n-1}<2^{n-1}\text{ and }f_n<2^n} \\ \implies {f_{n-1}+f_n=f_{n+1}}<2^n+2^{n-1}=2^{n-1}(2+1)=3\cdot2^{n-1}<4\cdot 2^{n-1}=2^{n+1}
+				\end{dmath*} So, by induction, for all $n\in\mathbb{N}$, $f_n<2^n$.\qed
+			\end{description}
+			
+			\item Prove that $f_{n+1}f_{n-1}=f_n^2+\left(-1\right)^n, n\geq2$. 
+			\begin{description}
+				\item[Base case: $\mathbf{n=2}$] $f_3f_1=f_2^2+\left(-1\right)^2\implies2\cdot1=1+1\implies2=2$ \checkmark 
+				\item[Inductive step: Assume $\mathbf{f_{n+1}f_{n-1}=f_n^2+\left(-1\right)^n}$ and show $\mathbf{f_{n+2}f_n=f_{n+1}^2+\left(-1\right)^{n+1}}$].
+				\begin{dmath*}
+					f_{n+1}f_{n-1}=f_n^2+\left(-1\right)^n \quad\text{by induction hypothesis} \implies {-f_{n+1}f_{n-1}=-f_n^2+\left(-1\right)^{n+1}}\implies
+					{-f_{n+1}\left(f_{n+1}-f_n\right)=-f_n^2+\left(-1\right)^{n+1}}\quad\text{by definition of Fibonacci numbers}\implies {f_nf_{n+1}-f_{n+1}^2=-f_n^2+\left(-1\right)^{n+1}}\implies {f_nf_{n+1}+f_n^2=f^2_{n+1}+\left(-1\right)^{n+1}}\implies {f_n\left(f_{n+1}+f_n\right)=f_{n+1}^2+\left(-1\right)^{n+1}}\implies {f_nf_{n+2}=f^2_{n+1}+\left(-1\right)^{n+1}}
+				\end{dmath*} So for all $n\in\mathbb{N}$ such that $n\geq2$, $f_{n+1}f_{n-1}=f_n^2+\left(-1\right)^n$. \qed
+			\end{description}
+			
+			\item Prove that $f_n=\frac{\left(1+\sqrt{5}\right)^n-\left(1-\sqrt{5}\right)^n}{2^n\sqrt{5}}$.
+			\begin{description}
+				\item[Base case: $\mathbf{n=1}\to$] $\frac{\left(1+\sqrt{5}\right)^1-\left(1-\sqrt{5}\right)^1}{2\sqrt{5}}=\frac{2\sqrt{5}}{2\sqrt{5}}=1$. \checkmark 
+				\item[Base case: $\mathbf{n=2}\to$] $\frac{\left(1+\sqrt{5}\right)^2-\left(1-\sqrt{5}\right)^2}{2^2\sqrt{5}}=\frac{1+2\sqrt{5}+5-\left(1-2\sqrt{5}+5\right)}{4\sqrt{5}}=\frac{4\sqrt{5}}{4\sqrt{5}}=1$. \checkmark 
+				\item[Inductive step: Assume $\mathbf{f_n=\frac{\left(1+\sqrt{5}\right)^n-\left(1-\sqrt{5}\right)^n}{2^n\sqrt{5}}}$ and $\mathbf{f_{n+1}=\frac{\left(1+\sqrt{5}\right)^{n+1}-\left(1-\sqrt{5}\right)^{n+1}}{2^{n+1}\sqrt{5}}}$ and]  \hfill\\ \textbf{ show that} $\mathbf{f_{n+2}=\frac{\left(1+\sqrt{5}\right)^{n+2}-\left(1-\sqrt{5}\right)^{n+2}}{2^{n+2}\sqrt{5}}}$\textbf{.}
+				\begin{dmath*}
+					f_{n+2}=f_n+f_{n+1}\quad\text{by definition of Fibonacci numbers}\\
+					{f_n+f_{n+1}=\frac{\left(1+\sqrt{5}\right)^n-\left(1-\sqrt{5}\right)^n}{2^n\sqrt{5}}+\frac{\left(1+\sqrt{5}\right)^{n+1}-\left(1-\sqrt{5}\right)^{n+1}}{2^{n+1}\sqrt{5}}}\quad\text{by inductive hypothesis} =\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\right]+\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}\right] = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n+\left(\frac{1+\sqrt{5}}{2}\right)^{n+1}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+1}\right] = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n\left(1+\frac{1+\sqrt{5}}{2}\right)-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\left(1+\frac{1-\sqrt{5}}{2}\right)\right] = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n\left(\frac{3+\sqrt{5}}{2}\right)-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\left(\frac{3-\sqrt{5}}{2}\right)\right] = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n\left[\frac{1}{4}\left(6+2\sqrt{5}\right)\right]-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\left[\frac{1}{4}\left(6-2\sqrt{5}\right)\right]\right] = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n\left(\frac{1+\sqrt{5}}{2}\right)^2-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\left(\frac{1-\sqrt{5}}{2}\right)^2\right] = \frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^{n+2}-\left(\frac{1-\sqrt{5}}{2}\right)^{n+2}\right] = {\frac{\left(1+\sqrt{5}\right)^{n+2}-\left(1-\sqrt{5}\right)^{n+2}}{2^{n+2}\sqrt{5}}=f_{n+2}}
+				\end{dmath*}
+			\end{description}
+			
+		\item Show that $\lim_{n\to\infty} {f_n/f_{n+1}=\frac{\sqrt{5}-1}{2}}$. \\
+		Let $x=\lim_{n\to\infty}$
+		\begin{dmath*}
+			\lim_{n\to\infty} {\frac{f_n}{f_{n+1}}}=\lim_{n\to\infty}\frac{f_{n+2}-f_{n+1}}{f_{n+1}}=\lim_{n\to\infty} \frac{f_{n+2}}{f_{n+1}}-1\implies {\lim_{n\to\infty}{\frac{f_n}{f_{n+1}}}=\lim_{n\to\infty} \frac{f_{n+2}}{f_{n+1}}-1}
+		\end{dmath*}
+		\end{enumerate}
+		
+	\end{description}
+\end{document}

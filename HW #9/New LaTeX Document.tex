@@ -1,0 +1,219 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[twoside, margin=1cm]{geometry}
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace} %for Double Spacing
+\usepackage{breqn}
+\usepackage{enumerate}
+\usepackage{multicol}
+%\usepackage{pgfplots}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Exercise}[section]
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\inv}[1]{#1^{-1}}
+
+\DeclareMathOperator{\ord}{ord}
+\setcounter{section}{11}
+
+
+%\doublespacing
+\onehalfspacing
+\begin{document}
+	\begin{flushright}
+		Moshe Mason Rubin\\MATH 330 Homework \#9\\23 November 2016
+	\end{flushright}
+	
+	
+	\setcounter{theorem}{9}
+	\begin{theorem}
+		If $\phi: G \to H$ is a group homomorphism and $G$ is cyclic, prove that $\phi \left( G \right)$ is also cyclic. 
+	\end{theorem}
+	\begin{proof}
+		Let $\gamma$ be a generator for $G$. Then for each $g \in G$, $g = \gamma^n$ for some $n \in \N$. Then \begin{dmath*}
+			\phi (g) = \phi \left( \gamma^n \right) \condition[]{because $\gamma$ generates $G$} = \phi \left( \underbrace{\gamma \cdot \gamma \cdot \ldots \cdot \gamma}_{n\text{ times}} \right) = \underbrace{\phi \left( \gamma \right) \circ \phi \left( \gamma \right) \circ \cdots \circ \phi \left( \gamma \right) }_{n \text{ times}} \condition[]{as $\phi$ is a homomorphism so $\phi \left( g_1\cdot g_2 \right) = \phi\left( g_1 \right) \circ \phi \left( g_2 \right)$} = \phi^n \left( \gamma \right)
+		\end{dmath*} So for all $\phi\left( g \right) \in \phi \left( G \right)$, we have $\phi \left( g \right) = \phi^n \left( \gamma \right)$ for some $n\in \N$. So $\phi \left( \gamma \right)$ generates $\phi \left( G \right)$; so $\phi \left( G \right)$ is cyclic.
+	\end{proof}
+
+	\begin{lemma} \label{orderpres}
+		If $G_1, G_2$ are groups with an isomorphism $\phi: G_1 \to G_2$ and there exists $g_1 \in G_1$ such that $\ord\left( g_1 \right) = n$ for some $n \in \N$. Then $\ord\left( \phi\left( g_1 \right) \right) = n$.
+	\end{lemma}
+	\begin{proof}
+		If $g_1^n = e_1$ then \begin{dmath*}
+			e_2 = \phi \left( e_1 \right) \condition[]{by Proposition 1.11.1} = \phi \left( g_1^n \right) \condition[]{because $\ord\left( g_1 \right) = n$} = \phi^n \left( g_1 \right) \condition[]{because $\phi$ is an isomorphism}
+		\end{dmath*} So $\ord \left( \phi\left( g_1\right) \right) = n$.
+	\end{proof}
+	\setcounter{theorem}{13}
+	\begin{theorem}
+		Prove or disprove: $\Q/\Z \simeq \Q$.
+	\end{theorem}
+	\begin{proof}
+		Consider $\frac{1}{2} + \Z \in \Q/\Z$ which has order $2$ as $\left( \frac{1}{2} + \Z \right) + \left( \frac{1}{2} + \Z \right) = 1 + \Z \equiv \Z$ and $\Z$ is the identity in $\Q/\Z$.\\
+		Consider for a contradiction that there exists a non-zero $q \in \Q$ with order $2$. That is, $q + q = 0 \iff 2q = 0$ which has no solution in $\Q \setminus \left\{ 0 \right\}$. So there is no element of order $2$ in $\Q$. So by Lemma \ref{orderpres}, the two groups cannot be isomorphic. 
+	\end{proof}
+
+	\setcounter{theorem}{4}
+	\begin{theorem}[Addition Exercises: Automorphism \#5]
+		Let $G$ be a group and $i_g$ be an inner automorphism of $G$, and define a map \begin{dgroup*}
+		\begin{dmath*}
+			\psi \hiderel{:} G \to \mathrm{Aut} \left( G \right)
+		\end{dmath*}
+		\begin{dsuspend}
+			by
+		\end{dsuspend}
+		\begin{dmath*}
+			g \mapsto i_g\text{.}
+		\end{dmath*}
+		\end{dgroup*} Prove that this map is a homomorphism with image $\mathrm{Inn} \left( G \right)$ and kernel $Z \left( G \right)$. Use this result to conclude that \[ G/Z\left( G \right) \simeq \mathrm{Inn}\left( G \right)\text{.} \]
+	\end{theorem}
+	\begin{proof}
+		Recall $$\begin{array}{crcl}
+			&	\mathrm{Aut} \left( G \right)	&	:=	&	\left\{ \text{all isomorphisms }  \phi: G \to G \right\}\\
+			\text{Given } g\in G\text{,}	&	i_g: G\to G	&	\text{by}	&	x \mapsto gx\inv{g}\\
+			&	\mathrm{Inn}\left(G\right)	&	:=	&	\left\{ i_g \text{ for all } g\in G \right\}\\
+			&	Z(G)	&	:=	&	\left\{ x\in G : gx = xg \text{ for all } g\in G \right\}
+		\end{array}$$
+		$\psi$ is a homomorphism as \begin{dmath*}
+			\psi \left( g_1 \cdot g_2 \right) = i_{g_1 \cdot g_2} \left(x\right) \condition[]{by definition of $\psi$} = \left( g_1 \cdot g_2\right) \cdot \left( x \right) \cdot \inv{\left( g_1\cdot g_2 \right)} \condition[]{by definition of $i_g$} = \left( g_1 \cdot g_2\right) \cdot \left( x \right) \cdot \left( \inv{g_2} \cdot \inv{g_1} \right) = g_1 \cdot \left(g_2 \cdot x \cdot \inv{g_2} \right) \cdot \inv{g_1} \condition[]{because $G$ is a group so elements associate} = g_1 \cdot \left(i_{g_2} (x) \right) \cdot \inv{g_1} \condition[]{by definition of $i_g$} = \left(i_{g_1} \circ i_{g_2}\right)(x) \condition[]{by definition of $i_g$}
+		\end{dmath*} So $\psi$ is a homomorphism.\\ 
+		The image of $\psi$ is clearly $\mathrm{Inn}\left( G \right)$ as $\mathrm{Im} (\psi) := \left\{ \psi(g) \text{ for all } g\in G\right\} = \left\{ i_g \text{ for all } g\in G \right\} =: \mathrm{Inn}(G)$.\\
+		$\ker(\psi) := \left\{g\in G : \psi(g) = id\right\}$ and $\psi(g) = id \iff gx\inv{g} = x \iff gx = xg$. So $\ker\left( \psi \right) = Z(G)$.\\
+		By the First Isomorphism Theorem, $G/\ker\left(\psi\right) \simeq \mathrm{Im} \left(\psi \right)$, so we have $G/Z\left(G\right) \simeq \mathrm{Inn}(G)$.
+	\end{proof}
+
+	\setcounter{section}{13}
+	\setcounter{theorem}{2}
+	\begin{theorem}
+		Find all of the abelian groups of order $720$ up to isomorphism. 
+	\end{theorem}
+	\begin{proof}[Solution]
+		$720 = 2^4 \cdot 3^2 \cdot 5$, so, by The Fundamental Theorem of Finite Abelian Groups, all of the abelian groups of order 720 up to isomorphism are: \begin{multicols}{2}
+			\begin{enumerate}
+				\item $\Z_2^4 \times \Z_3^2 \times \Z_5$
+				\item $\Z_4 \times \Z_2^2 \times \Z_3^2 \times \Z_5$
+				\item $\Z_4^2 \times \Z_3^2 \times \Z_5$
+				\item $\Z_8 \times Z_2 \times \Z_3^2 \times \Z_5$
+				\item $\Z_{16} \times \Z_3^2 \times \Z_5$
+				\item $\Z_2^4 \times \Z_9 \times \Z_5$
+				\item $\Z_4 \times \Z_9 \times \Z_3^2 \times \Z_5$
+				\item $\Z_4^2 \times \Z_9 \times \Z_5$
+				\item $\Z_8 \times Z_2 \times \Z_9 \times \Z_5$
+				\item $\Z_{16} \times \Z_9 \times \Z_5$ \qedhere
+			\end{enumerate}
+		\end{multicols}
+	\end{proof}
+
+	\setcounter{theorem}{4}
+	\begin{theorem}
+		Show that the infinite direct product $G = \Z_2 \times \Z_2 \times \cdots$ is not finitely generated. 
+	\end{theorem}
+	\begin{proof}
+		Suppose for a contradiction that $G$ is finitely generated and has $n$ generators. Because $G$ is abelian and every element is of order $2$, so $|G|\leq 2^n$, which is a contradiction to the assumption that $G$ is infinite. 
+	\end{proof}
+
+	\setcounter{theorem}{13}
+	\begin{theorem}
+		Let $G$ be a solvable group. Prove that any sub-group of $G$ is also solvable. 
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+
+	\setcounter{section}{14}
+	\setcounter{theorem}{1}
+	\begin{theorem}
+		Computer all the $X_g$ ad all $G_x$ for each of the following permutation groups.
+		\begin{enumerate}[(a)]
+			\item $X = \left\{ 1,2,3 \right\}$,\\
+			$G = S_3 = \left\{ (1), (12), (13), (23), (123), (132) \right\}$
+			
+			\item $X = \left\{ 1,2,3,4,5,6 \right\}$,\\
+			$G = \left\{ (1), (12), (345), (354), (12)(345), (12)(354) \right\}$
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+	
+	
+	\setcounter{theorem}{4}
+	\begin{theorem}
+		Let $G = A_4$ and suppose that $G$ acts on itself by conjugation; that is, $\left( g, h \right) \mapsto gh\inv{g}$. 
+		\begin{enumerate}[(a)]
+			\item Determine the conjugacy classes (orbits) of each element of $G$.
+			\item Determine all the isotropy sub-groups for each element of $G$. 
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+
+	\setcounter{section}{16}
+	\setcounter{theorem}{0}
+	\begin{theorem}
+		Which of the following sets are rings with respect to the usual operations of addition and multiplication? If the set is a ring, is it also a field?
+		\begin{enumerate}[(a)]
+			\setcounter{enumi}{1}
+			\item $\Z_{18}$
+			\item $\Q \left( \sqrt{2} \right) = \left\{ a + b\sqrt{2} : a,b \in \Q \right\}$
+			\item $\Q \left( \sqrt{2}, \sqrt{3} \right) = \left\{ a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6} : a,b,c,d \in \Q \right\}$
+			\item $\Z \left[ \sqrt{3} \right] = \left\{ a + b\sqrt{3} : a,b \in \Z \right\}$
+			\item $R = \left\{ a + b\sqrt[3]{3} : a,b \in \Q \right\}$
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+
+	\begin{theorem}
+		Let $R$ be the ring of $2 \times 2$ matrices of the form \[\begin{bmatrix} a & b \\ 0 & 0 \end{bmatrix}\text{,} \] where $a,b \in \R$. Show that although $R$ is a ring that has no identity, we can find a sub-ring $S$ of $R$ with an identity. 
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+	
+	
+	\begin{theorem}
+		List of characterize all of the units in each of the following rings.
+		\begin{enumerate}[(a)]
+			\item $\Z_{10}$
+			\item $\Z_{12}$
+			\item $\Z_7$
+			\item $\mathbb{M}_2 \left( \Z \right)$, the $2 \times 2$ matrices with entries in $\Z$
+			\item $\mathbb{M}_2 \left( \Z_2 \right)$, the $2 \times 2$ matrices with entries in $\Z_2$. 
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+	
+	\begin{theorem}
+		Find all of the ideals in each of the following rings. Which of these ideals are maximal and which are prime?
+		\begin{enumerate}[(a)]
+			\item $\Z_{18}$
+			\item $\Z_{25}$
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+
+	\setcounter{theorem}{8}
+	\begin{theorem}
+		What is the characteristic of the field formed by the set of matrices \[ F = \left\{ \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}, \begin{bmatrix} 1 & 1\\ 1 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 1 \\ 1 & 1 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}  \right\} \] with entries in $\Z_2$?
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+	
+\end{document}

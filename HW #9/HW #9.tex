@@ -1,0 +1,289 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[twoside, margin=1cm]{geometry}
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace} %for Double Spacing
+\usepackage{breqn}
+\usepackage{enumerate}
+\usepackage{multicol}
+%\usepackage{pgfplots}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Exercise}[section]
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\inv}[1]{#1^{-1}}
+
+\DeclareMathOperator{\ord}{ord}
+\setcounter{section}{11}
+
+
+%\doublespacing
+\onehalfspacing
+\begin{document}
+	\begin{flushright}
+		Moshe Mason Rubin\\MATH 330 Homework \#9\\23 November 2016
+	\end{flushright}
+	
+	
+	\setcounter{theorem}{9}
+	\begin{theorem}
+		If $\phi: G \to H$ is a group homomorphism and $G$ is cyclic, prove that $\phi \left( G \right)$ is also cyclic. 
+	\end{theorem}
+	\begin{proof}
+		Let $\gamma$ be a generator for $G$. Then for each $g \in G$, $g = \gamma^n$ for some $n \in \N$. Then \begin{dmath*}
+			\phi (g) = \phi \left( \gamma^n \right) \condition[]{because $\gamma$ generates $G$} = \phi \left( \underbrace{\gamma \cdot \gamma \cdot \ldots \cdot \gamma}_{n\text{ times}} \right) = \underbrace{\phi \left( \gamma \right) \circ \phi \left( \gamma \right) \circ \cdots \circ \phi \left( \gamma \right) }_{n \text{ times}} \condition[]{as $\phi$ is a homomorphism so $\phi \left( g_1\cdot g_2 \right) = \phi\left( g_1 \right) \circ \phi \left( g_2 \right)$} = \phi^n \left( \gamma \right)
+		\end{dmath*} So for all $\phi\left( g \right) \in \phi \left( G \right)$, we have $\phi \left( g \right) = \phi^n \left( \gamma \right)$ for some $n\in \N$. So $\phi \left( \gamma \right)$ generates $\phi \left( G \right)$; so $\phi \left( G \right)$ is cyclic.
+	\end{proof}
+
+	\begin{lemma} \label{orderpres}
+		If $G_1, G_2$ are groups with an isomorphism $\phi: G_1 \to G_2$ and there exists $g_1 \in G_1$ such that $\ord\left( g_1 \right) = n$ for some $n \in \N$. Then $\ord\left( \phi\left( g_1 \right) \right) = n$.
+	\end{lemma}
+	\begin{proof}
+		If $g_1^n = e_1$ then \begin{dmath*}
+			e_2 = \phi \left( e_1 \right) \condition[]{by Proposition 1.11.1} = \phi \left( g_1^n \right) \condition[]{because $\ord\left( g_1 \right) = n$} = \phi^n \left( g_1 \right) \condition[]{because $\phi$ is an isomorphism}
+		\end{dmath*} So $\ord \left( \phi\left( g_1\right) \right) = n$.
+	\end{proof}
+	\setcounter{theorem}{13}
+	\begin{theorem}
+		Prove or disprove: $\Q/\Z \simeq \Q$.
+	\end{theorem}
+	\begin{proof}
+		Consider $\frac{1}{2} + \Z \in \Q/\Z$ which has order $2$ as $\left( \frac{1}{2} + \Z \right) + \left( \frac{1}{2} + \Z \right) = 1 + \Z \equiv \Z$ and $\Z$ is the identity in $\Q/\Z$.\\
+		Consider for a contradiction that there exists a non-zero $q \in \Q$ with order $2$. That is, $q + q = 0 \iff 2q = 0$ which has no solution in $\Q \setminus \left\{ 0 \right\}$. So there is no element of order $2$ in $\Q$. So by Lemma \ref{orderpres}, the two groups cannot be isomorphic. 
+	\end{proof}
+
+	\setcounter{theorem}{4}
+	\begin{theorem}[Addition Exercises: Automorphism \#5]
+		Let $G$ be a group and $i_g$ be an inner automorphism of $G$, and define a map \begin{dgroup*}
+		\begin{dmath*}
+			\psi \hiderel{:} G \to \mathrm{Aut} \left( G \right)
+		\end{dmath*}
+		\begin{dsuspend}
+			by
+		\end{dsuspend}
+		\begin{dmath*}
+			g \mapsto i_g\text{.}
+		\end{dmath*}
+		\end{dgroup*} Prove that this map is a homomorphism with image $\mathrm{Inn} \left( G \right)$ and kernel $Z \left( G \right)$. Use this result to conclude that \[ G/Z\left( G \right) \simeq \mathrm{Inn}\left( G \right)\text{.} \]
+	\end{theorem}
+	\begin{proof}
+		Recall $$\begin{array}{crcl}
+			&	\mathrm{Aut} \left( G \right)	&	:=	&	\left\{ \text{all isomorphisms }  \phi: G \to G \right\}\\
+			\text{Given } g\in G\text{,}	&	i_g: G\to G	&	\text{by}	&	x \mapsto gx\inv{g}\\
+			&	\mathrm{Inn}\left(G\right)	&	:=	&	\left\{ i_g \text{ for all } g\in G \right\}\\
+			&	Z(G)	&	:=	&	\left\{ x\in G : gx = xg \text{ for all } g\in G \right\}
+		\end{array}$$
+		$\psi$ is a homomorphism as \begin{dmath*}
+			\psi \left( g_1 \cdot g_2 \right) = i_{g_1 \cdot g_2} \left(x\right) \condition[]{by definition of $\psi$} = \left( g_1 \cdot g_2\right) \cdot \left( x \right) \cdot \inv{\left( g_1\cdot g_2 \right)} \condition[]{by definition of $i_g$} = \left( g_1 \cdot g_2\right) \cdot \left( x \right) \cdot \left( \inv{g_2} \cdot \inv{g_1} \right) = g_1 \cdot \left(g_2 \cdot x \cdot \inv{g_2} \right) \cdot \inv{g_1} \condition[]{because $G$ is a group so elements associate} = g_1 \cdot \left(i_{g_2} (x) \right) \cdot \inv{g_1} \condition[]{by definition of $i_g$} = \left(i_{g_1} \circ i_{g_2}\right)(x) \condition[]{by definition of $i_g$}
+		\end{dmath*} So $\psi$ is a homomorphism.\\ 
+		The image of $\psi$ is clearly $\mathrm{Inn}\left( G \right)$ as $\mathrm{Im} (\psi) := \left\{ \psi(g) \text{ for all } g\in G\right\} = \left\{ i_g \text{ for all } g\in G \right\} =: \mathrm{Inn}(G)$.\\
+		$\ker(\psi) := \left\{g\in G : \psi(g) = id\right\}$ and $\psi(g) = id \iff gx\inv{g} = x \iff gx = xg$. So $\ker\left( \psi \right) = Z(G)$.\\
+		By the First Isomorphism Theorem, $G/\ker\left(\psi\right) \simeq \mathrm{Im} \left(\psi \right)$, so we have $G/Z\left(G\right) \simeq \mathrm{Inn}(G)$.
+	\end{proof}
+
+	\setcounter{section}{13}
+	\setcounter{theorem}{2}
+	\begin{theorem}
+		Find all of the abelian groups of order $720$ up to isomorphism. 
+	\end{theorem}
+	\begin{proof}[Solution]
+		$720 = 2^4 \cdot 3^2 \cdot 5$, so, by The Fundamental Theorem of Finite Abelian Groups, all of the abelian groups of order 720 up to isomorphism are: \begin{multicols}{2}
+			\begin{enumerate}
+				\item $\Z_2^4 \times \Z_3^2 \times \Z_5$
+				\item $\Z_4 \times \Z_2^2 \times \Z_3^2 \times \Z_5$
+				\item $\Z_4^2 \times \Z_3^2 \times \Z_5$
+				\item $\Z_8 \times Z_2 \times \Z_3^2 \times \Z_5$
+				\item $\Z_{16} \times \Z_3^2 \times \Z_5$
+				\item $\Z_2^4 \times \Z_9 \times \Z_5$
+				\item $\Z_4 \times \Z_9 \times \Z_3^2 \times \Z_5$
+				\item $\Z_4^2 \times \Z_9 \times \Z_5$
+				\item $\Z_8 \times Z_2 \times \Z_9 \times \Z_5$
+				\item $\Z_{16} \times \Z_9 \times \Z_5$ \qedhere
+			\end{enumerate}
+		\end{multicols}
+	\end{proof}
+
+	\setcounter{theorem}{4}
+	\begin{theorem}
+		Show that the infinite direct product $G = \Z_2 \times \Z_2 \times \cdots$ is not finitely generated. 
+	\end{theorem}
+	\begin{proof}
+		Suppose for a contradiction that $G$ is finitely generated and has $n$ generators. Because $G$ is abelian and every element is of order $2$, so $|G|\leq 2^n$, which is a contradiction to the assumption that $G$ is infinite. 
+	\end{proof}
+
+	\setcounter{theorem}{13}
+	\begin{theorem}
+		Let $G$ be a solvable group. Prove that any sub-group of $G$ is also solvable. 
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+
+	\setcounter{section}{14}
+	\setcounter{theorem}{1}
+	\begin{theorem}
+		Computer all the $X_g$ and all $G_x$ for each of the following permutation groups.
+		\begin{enumerate}[(a)]
+			\item $X = \left\{ 1,2,3 \right\}$,\\
+			$G = S_3 = \left\{ (1), (12), (13), (23), (123), (132) \right\}$
+			
+			\item $X = \left\{ 1,2,3,4,5,6 \right\}$,\\
+			$G = \left\{ (1), (12), (345), (354), (12)(345), (12)(354) \right\}$
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}[Solution] Recall $X_g := \left\{ x \in X \text{ such that } gx = x \right\}$ and $G_x := \left\{ g \in G \text{ such that } gx = x \right\}$
+		\begin{enumerate}[(a)]
+			\item \begin{multicols}{4}
+			\begin{itemize}
+				\item $X_{(1)} = X$
+				\item $X_{(12)} = \left\{ 3 \right\}$
+				\item $X_{(13)} = \left\{ 2 \right\}$
+				\item $X_{(23)} = \left\{ 1 \right\}$
+				\item $X_{(123)} = X_{(132)} = \emptyset$
+				\item $G_1 = \left\{ (1), (23) \right\}$
+				\item $G_2 = \left\{ (1), (13) \right\}$
+				\item $G_3 = \left\{ (1), (12) \right\}$
+			\end{itemize}
+			\end{multicols}
+			\item \begin{multicols}{4}
+			\begin{itemize}
+				\item $X_{(1)} = X$
+				\item $X_{(12)} = \left\{ 3, 4, 5, 6 \right\}$
+				\item ${X_{(345)} = X_{(354)} = \left\{ 1, 2, 6 \right\}}$
+				\item ${X_{(12)(345)} = X_{(12)(354)} = \left\{ 6 \right\}}$
+				\item ${G_1 = G_2 = \left\{ (345), (354) \right\}}$
+				\item ${G_3 = G_4 = G_5 = \left\{ (1), (12) \right\}}$
+				\item $G_6 = G$ 
+			\end{itemize}\qedhere
+			\end{multicols}
+		\end{enumerate}
+	\end{proof}
+	
+	
+	\setcounter{theorem}{4}
+	\begin{theorem}
+		Let $G = A_4$ and suppose that $G$ acts on itself by conjugation; that is, $\left( g, h \right) \mapsto gh\inv{g}$. 
+		\begin{enumerate}[(a)]
+			\item Determine the conjugacy classes (orbits) of each element of $G$.
+			\item Determine all the isotropy sub-groups for each element of $G$. 
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof} Recall if $\sigma = \left( \sigma_1, \ldots, \sigma_n \right)$ and $\tau = \left( \tau_1, \ldots, \tau_n \right)$ are permutations then $\tau\sigma\inv{\tau} = \left( \tau\left( \sigma_1 \right), \ldots, \tau\left( \sigma_n \right) \right)$. 
+		\begin{enumerate}[(a)]
+		%\setcounter{enumi}{-1}
+		%\item $A_4 = \left\{ id, (12)(13), (12)(14), (12)(34), (13)(12), (13)(14), (13)(24), (14)(12), (14)(13), (14)(23), (23)(24), (24)(23) \right\}$, so $\mathcal{O}_1 = \mathcal{O}_2 = \mathcal{O}_3 = \mathcal{O}_4 = \left\{ 1, 2, 3, 4\right\}$ because for \textit{any} $x,y \in \left\{ 1, 2, 3, 4\right\}$ there exists $g\in G$ such that $gx = y$.
+		
+		\item $A_4 = \left\{ (234), (243), (134), (143), (124), (142), (123), (132), (12)(34), (13)(24), (14)(23), id \right\}$, so
+		%\begin{multicols}{2}
+		\begin{itemize}
+			\item $\mathcal{O}_{id} = \left\{ id \right\}$
+			\item $\mathcal{O}_{(234)} = \left\{ (234), (423), (241), (213), (431), (132), (314), (124), (143), (412), (321), (234) \right\} = \left\{ (234), (124), (132), (143)\right\}$ 
+			\item $\mathcal{O}_{(243)} = \left\{ (324), (243), (214), (231), (413), (123), (341), (142), (134), (421), (312), (243) \right\} = \left\{ (243), (142), (123), (134) \right\}$
+			\item $\mathcal{O}_{(12)(34)} = \left\{ (13)(42), (14)(23), (32)(41), (42)(13), (24)(31), (41)(32), (23)(14), (31)(24), (12)(34), (43)(12), (43)(12), (12)(34) \right\} = \left\{ (13)(24), (14)(23), (12)(34) \right\}$
+		\end{itemize}
+		%\end{multicols}
+		
+		\item Recall given an element $x\in G$, $G_x$ is the isotropy sub-group defined by $G_x := \left\{ g \in G \text{ such that } gx = x \right\}$
+		\end{enumerate}
+	\end{proof}
+
+	\setcounter{section}{16}
+	\setcounter{theorem}{0}
+	\begin{theorem}
+		Which of the following sets are rings with respect to the usual operations of addition and multiplication? If the set is a ring, is it also a field?
+		\begin{multicols}{2}
+		\begin{enumerate}[(a)]
+			\setcounter{enumi}{1}
+			\item $\Z_{18}$
+			\item $\Q \left( \sqrt{2} \right) = \left\{ a + b\sqrt{2} : a,b \in \Q \right\}$
+			\item $\Q \left( \sqrt{2}, \sqrt{3} \right) = \left\{ a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6} : a,b,c,d \in \Q \right\}$
+			\item $\Z \left[ \sqrt{3} \right] = \left\{ a + b\sqrt{3} : a,b \in \Z \right\}$
+			\item $R = \left\{ a + b\sqrt[3]{3} : a,b \in \Q \right\}$
+		\end{enumerate}
+		\end{multicols}
+	\end{theorem}
+	\begin{proof}\hfill
+		\begin{enumerate}[(a)]
+			\setcounter{enumi}{1}
+			\item $\Z_{18}$ is a ring; however it is not a field because not every every element has an inverse. 
+			\item $\Q \left( \sqrt{2} \right) = \left\{ a + b\sqrt{2} : a,b \in \Q \right\}$ is both a ring and a field: the inverse of any given $a + b\sqrt{2} \in \Q \left( \sqrt{2} \right)$ is given by $\frac{a}{a^2-2b^2} + \frac{b}{2b^2-a^2}\sqrt{2}$. Notice this is always well defined except when $a^2-2b^2 = 0$, which cannot be the case because $a, b \in \Q$. 
+			\item $\Q \left( \sqrt{2}, \sqrt{3} \right) = \left\{ a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6} : a,b,c,d \in \Q \right\}$ is a ring but not a field.  $\Q \left( \sqrt{2}, \sqrt{3} \right)$ is closed as one can check that \begin{dmath*}\left( a + b\sqrt{2} + c\sqrt{3} + d\sqrt{6} \right) \left(\alpha + \beta\sqrt{2} + \gamma\sqrt{2} + \delta\sqrt{2} \right) = \left( a\alpha + 2b\beta + 3c\gamma + 6d\delta \right) + \left( b\alpha + a\beta + 3d\gamma + 3 c\delta \right)\sqrt{2} + \left( c\alpha + 2d\beta + a\gamma + 2b\delta \right)\sqrt{3} + \left( d\alpha + c\beta + b\gamma + a\delta \right)\sqrt{6} \in \Q \left( \sqrt{2}, \sqrt{3} \right)\end{dmath*} However, $\Q \left( \sqrt{2}, \sqrt{3} \right)$ is not closed under inverses so it is not a field.
+			\item $\Z \left[ \sqrt{3} \right] = \left\{ a + b\sqrt{3} : a,b \in \Z \right\}$ is a ring but not a field.
+			\item $R = \left\{ a + b\sqrt[3]{3} : a,b \in \Q \right\}$ is a ring but not a field.\qedhere
+		\end{enumerate}
+	\end{proof}
+
+	\begin{theorem}
+		Let $R$ be the ring of $2 \times 2$ matrices of the form \[\begin{bmatrix} a & b \\ 0 & 0 \end{bmatrix}\text{,} \] where $a,b \in \R$. Show that although $R$ is a ring that has no identity, we can find a sub-ring $S$ of $R$ with an identity. 
+	\end{theorem}
+	\begin{proof}
+		Consider $S := \left\{ \left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right] \text{ such that } c \in \R \right\} \subseteq R$. By Proposition 16.2, to show that $S \subseteq R$ is a sub-ring of $R$, it is sufficient to show
+		\begin{enumerate}
+			\item $S \not= \emptyset$
+			\item $rs \in S$ for all $r, s\in S$
+			\item $r-s \in S$ for all $r, s\in S$
+			\setcounter{enumi}{0}
+			\item $S \not= \emptyset$ as $\left[ \begin{smallmatrix} 0 & 0 \\ 0 & 0\end{smallmatrix} \right] \in S$. \checkmark
+			\item $S$ is closed under multiplication as for $\left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right], \left[ \begin{smallmatrix} \gamma & 0 \\ 0 & 0\end{smallmatrix} \right] \in S$, $\left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right] \left[ \begin{smallmatrix} \gamma & 0 \\ 0 & 0\end{smallmatrix} \right] = \left[ \begin{smallmatrix} c\gamma & 0 \\ 0 & 0\end{smallmatrix} \right] \in S$. \checkmark 
+			\item $S$ is closed under subtraction as for $\left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right], \left[ \begin{smallmatrix} \gamma & 0 \\ 0 & 0\end{smallmatrix} \right] \in S$, $\left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right] - \left[ \begin{smallmatrix} \gamma & 0 \\ 0 & 0\end{smallmatrix} \right] = \left[ \begin{smallmatrix} c - \gamma & 0 \\ 0 & 0\end{smallmatrix} \right] \in S$. \checkmark 
+		\end{enumerate} So $S$ is a sub-ring of $R$. Furthermore, $S$ is a sub-ring with unity as for any $\left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right] \in S$, $\left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right] \left[ \begin{smallmatrix} 1 & 0 \\ 0 & 0\end{smallmatrix} \right] = \left[ \begin{smallmatrix} 1 & 0 \\ 0 & 0\end{smallmatrix} \right] \left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right] = \left[ \begin{smallmatrix} c & 0 \\ 0 & 0\end{smallmatrix} \right]$.
+	\end{proof}
+	
+	
+	\begin{theorem}
+		List or characterize all of the units in each of the following rings.
+		\begin{multicols}{2}
+		\begin{enumerate}[(a)]
+			\item $\Z_{10}$
+			\item $\Z_{12}$
+			\item $\Z_7$
+			\item $\mathbb{M}_2 \left( \Z \right)$, the $2 \times 2$ matrices with entries in $\Z$
+			\item $\mathbb{M}_2 \left( \Z_2 \right)$, the $2 \times 2$ matrices with entries in $\Z_2$. 
+		\end{enumerate}
+		\end{multicols}
+	\end{theorem}
+	\begin{proof}
+		\begin{enumerate}[(a)]
+			\item The units of $\Z_{10}$ are $\left\{ x \in \Z_{10} \text{ such that } \gcd(10,x) = 1\right\} = \left\{ 1, 3, 7, 9\right\}$.
+			\item The units of $\Z_{12}$ are $\left\{ x \in \Z_{12} \text{ such that } \gcd(12,x) = 1\right\} = \left\{ 1, 5, 7, 11\right\}$.
+			\item The units of $\Z_{7}$ are $\left\{ x \in \Z_{7} \text{ such that } \gcd(7,x) = 1\right\} = \Z_7$ as $7$ is prime.
+			\item The units of $\mathbb{M}_2\left( \Z \right)$ are $GL_2\left( \Z \right)$
+			\item The units of $\mathbb{M}_2\left( \Z_2 \right)$ are $GL_2\left( \Z_2 \right) = \mathbb{M}_2 \left( \Z_2 \right) \setminus \left\{ \left[ \begin{smallmatrix} 0 & 0\\ 0 & 0 \end{smallmatrix} \right], \left[ \begin{smallmatrix} 1 & 1\\ 1 & 1 \end{smallmatrix} \right] \right\}$ \qedhere 
+		\end{enumerate}
+	\end{proof}
+	
+	\begin{theorem}
+		Find all of the ideals in each of the following rings. Which of these ideals are maximal and which are prime?
+		\begin{multicols}{2}
+			\begin{enumerate}[(a)]
+			\item $\Z_{18}$
+			\item $\Z_{25}$
+		\end{enumerate}
+		\end{multicols}
+	\end{theorem}
+	\begin{proof}\hfill 
+		\begin{enumerate}[(a)]
+			\item The ideals of $\Z_{18}$ are $\left\{ 0 \right\}, \Z_{18}, 2\Z_{18}, 3\Z_{18}, 6\Z_{18},$ and $9\Z_{18}$.
+			\item The ideals of $\Z_{25}$ are $\left\{ 0 \right\}, \Z_5$, and $\Z_{25}$.
+		\end{enumerate}
+	\end{proof}
+
+	\setcounter{theorem}{8}
+	\begin{theorem}
+		What is the characteristic of the field formed by the set of matrices \[ F = \left\{ \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}, \begin{bmatrix} 1 & 1\\ 1 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 1 \\ 1 & 1 \end{bmatrix}, \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}  \right\} \] with entries in $\Z_2$?
+	\end{theorem}
+	\begin{proof}
+		The characteristic of $F$ is $2$ because $2r = \left[ \begin{smallmatrix} 0 & 0\\ 0 & 0 \end{smallmatrix} \right]$ for all $r\in F$. 
+	\end{proof}
+	
+\end{document}

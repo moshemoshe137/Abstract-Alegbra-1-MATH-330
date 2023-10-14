@@ -1,0 +1,295 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[margin=1cm]{geometry}
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{breqn}
+\usepackage{enumerate}
+\newcommand{\Z}{\mathbb{Z}}
+
+\doublespacing
+
+\begin{document}
+	\begin{flushright}
+		Moshe Mason Rubin\\MATH 330 Homework \#2\\9 September 2016
+	\end{flushright}
+	\begin{description}
+		\item[2.8] $\left(fg\right)^{\left(n\right)}\left(x\right)=\displaystyle\sum_{k=1}^n\binom{n}{k}f^{\left(k\right)}(x)g^{\left(n-k\right)}\left(x\right)$.\\
+		Notice $\binom{n}{k}+\binom{n}{k-1}:=\frac{n!}{k!\left(n-k\right)!}+\frac{n!}{\left(k-1\right)!\left(n+1-k\right)}=n!\left[\frac{n+1-k}{k!\left(n+1-k\right)!}+\frac{k}{k!\left(n+1-k\right)!}\right]=\frac{n!\left(n+1\right)}{k!\left(n-k+1\right)!}=:\binom{n+1}{k}$. So \begin{equation}\label{eq1}
+		\binom{n}{k}+\binom{n}{k-1}=\binom{n+1}{k}
+		\end{equation}
+		\begin{description}
+			\item[Base Case $\mathbf{n=1}\to$] $fg^{\left(1\right)}=\displaystyle\sum_{k=0}^1\binom{1}{k}f^{\left(k\right)}\left(x\right)g^{\left(n-k\right)}(x)=\binom{1}{0}f'g\left(x\right)+\binom{1}{1}fg'\left(x\right)=f'g+fg'$ which is true by product rule. \checkmark
+			\item[Inductive step: Assume $\mathbf{\left(fg\right)^{\left(n\right)}\left(x\right)=\displaystyle\sum_{k=1}^n\binom{n}{k}f^{\left(k\right)}(x)g^{\left(n-k\right)}\left(x\right)}$ and show $\mathbf{\left(fg\right)^{\left(n+1\right)}\left(x\right)=\displaystyle\sum_{k=1}^{n+1}\binom{n+1}{k}f^{\left(k\right)}(x)g^{\left(n+1-k\right)}\left(x\right)}$.]
+			\begin{dmath*}
+				(fg)^{\left(n+1\right)}\left(x\right)=\left[\left(fg\right)^{\left(n\right)}\left(x\right)\right]' = \left[\sum_{k=1}^n\binom{n}{k}f^{\left(k\right)}(x)g^{\left(n-k\right)}\left(x\right)\right]'\qquad\textit{by inductive hypothesis} =\left[\binom{n}{0}fg^{(n)}+\binom{n}{1}f'g^{\left(n-1\right)}+\binom{n}{2}f''g^{\left(n-2\right)}+\cdots+\binom{n}{n-2}f^{\left(n-2\right)}g''+\binom{n}{n-1}f^{\left(n-1\right)}g'+\binom{n}{n}f^{(n)}g\right]' = \binom{n}{0}f'g^{\left(n\right)}+\binom{n}{0}fg^{(n+1)}+\binom{n}{1}f''g^{(n-1)}+\binom{n}{1}f'g^{(n)}+\binom{n}{2}f'''g^{(n-2)}+\binom{n}{2}f''g^{\left(n-1\right)}+\cdots+\binom{n}{n-2}f^{\left(n-1\right)}g''+\binom{n}{n-2}f^{(n-2)}g'''+\binom{n}{n-1}f^{(n)}g'+\binom{n}{n-1}f^{(n-1)}g''+\binom{n}{n}f^{(n+1)}g+\binom{n}{n}f^{(n)}g'\qquad\textit{by base case} = {\binom{n}{0}fg^{(n+1)}+\left(\binom{n}{0}+\binom{n}{1}\right)f'g^{(n)}+\left(\binom{n}{1}+\binom{n}{2}\right)f''g^{(n-1)}+ \cdots} +\left(\binom{n}{n-2}+\binom{n}{n-1}\right)f^{(n-1)}g''+\left(\binom{n}{n-1}+\binom{n}{n}\right)f^{(n)}g'+\binom{n}{n}f^{(n+1)}g = \binom{n}{0}fg^{(n+1)}+\binom{n+1}{1}f'g^{(n)}+\binom{n+1}{2}f''g^{(n-1)}+ \cdots +\binom{n+1}{n-1}f^{(n-1)}g''+\binom{n+1}{n}f^{(n)}g'+\binom{n}{n}f^{(n+1)}g\qquad\textit{by equation (\ref{eq1})} = \binom{n+1}{0}fg^{(n+1)}+\binom{n+1}{1}f'g^{(n)}+\binom{n+1}{2}f''g^{(n-1)}+ \cdots +\binom{n+1}{n-1}f^{(n-1)}g''+\binom{n+1}{n}f^{(n)}g'+\binom{n+1}{n+1}f^{(n+1)}g\condition{as $\binom{n}{0}=\binom{n+1}{0}=\binom{n}{n}=\binom{n+1}{n+1}=1$}=\sum_{k=1}^{n+1}\binom{n+1}{k}f^{\left(k\right)}(x)g^{\left(n+1-k\right)}\left(x\right)
+			\end{dmath*} So for all $n\in\mathbb{N}$, $\left(fg\right)^{\left(n\right)}\left(x\right)=\displaystyle\sum_{k=1}^n\binom{n}{k}f^{\left(k\right)}(x)g^{\left(n-k\right)}\left(x\right)$.\qed 
+		\end{description}
+		
+		\item[2.27] Let $a,b,c\in\mathbb{Z}$. Prove that if $\gcd{(a,b)}=1$ and $a|bc$, then $a|c$. \\
+		By Theorem 2.4, $\gcd(a,b)=1\implies$ there exists $x,y\in\mathbb{Z}$ such that $ax+by=\gcd(a,b)=1$.\\ $a|bc\implies$ there exists $k\in\mathbb{Z}$ such that $ak=bc$ by definition. So \begin{dmath*}
+			ax+by\hiderel{=}1 \implies acx+bcy\hiderel{=}c \implies acx+aky\hiderel{=}c \condition[]{as $ak=bc$} \implies a(cx+ky)\hiderel{=}c
+		\end{dmath*} Because $(cx+ky)\in\Z$, so $a|c$ by definition. 
+		
+		\item[Lemma to 2.31] Let $x\in\Z$ such that $2|x^2$, then $2|x$. \\
+		Consider for a contradiction that $2|x^2$ but $2\nmid x$. Then $x$ must be of the form $x=2c+1$ for some $c\in\Z$ by the Remainder Theorem and assumption that $2\nmid x$. Then $x^2=c^2+2c+1=2(c^2+c)+1=2c'+1$. But $2\nmid \left(2c'+1\right)$, which is a contradiction to the assumption that $2|x^2$. So $2|x^2\implies 2|x$. 
+
+		\item[2.31] Show $\sqrt{2}\not\in\mathbb{Q}$. \\
+		Assume for a contradiction that $\sqrt{2}=\frac{p}{q}$, a fraction is lowest terms such that $p$ and $q$ share no divisors. Then $2=\frac{p^2}{q^2}$. \begin{dgroup*}\begin{dmath*}
+			2\hiderel{=}\frac{p^2}{q^2} \implies 2q^2\hiderel{=}p^2\implies 2|p^2 \condition[]{by definition of divides} \implies 2|p \condition[]{by lemma to 2.31} \implies {\text{There exists } k\in\Z\text{ such that } 2k\hiderel{=}p} \condition[]{by definition of divides}
+		\end{dmath*}\begin{dsuspend} So,\end{dsuspend}\begin{dmath*}
+			2q^2\hiderel{=}p^2\implies 2q^2\hiderel{=}\left(2k\right)^2 \condition[]{as $p=2k$} \implies 2q^2\hiderel{=}4k^2 \implies q^2\hiderel{=}2k^2 \implies 2|q^2 \condition[]{by definition of divides} \implies 2|q \condition[]{by lemma to 2.31}
+		\end{dmath*}\end{dgroup*} But $2|p$ and $2|q$ is a contradiction as $p$ and $q$ were assumed to be co-prime. So our assumption that $\sqrt{2}$ can be written as a fraction is incorrect and $\sqrt{2}\not\in\mathbb{Q}$. \qed 
+		
+		\item[3.1] Find all $x\in\Z$ satisfying each of the following equations.
+		\begin{enumerate}[(a)]
+			\item $3x\equiv2\pmod 7$\\
+			Notice $3\cdot5\equiv15\equiv1\pmod 7$. So $3x\equiv2\pmod7\implies 5\cdot3x\equiv5\cdot2\pmod7\implies15x\equiv10\pmod7\implies \fbox{$x\equiv3\pmod7$}$
+			
+			\item $5x+1\equiv13\pmod {23}$\\
+			Notice that $\gcd{(23,5)}=1$: $\begin{array}{ccc}
+				23=5q+r&  \to&  23=5(4)+3\\ 
+				5=3q+r&  \to&  5=3(1)+2\\ 
+				3=2q+r&  \to&  3=2(1)+\mathbf{1}\\ 
+				2=1q+r&  \to&  2=1(2)+0
+			\end{array}$\\ Furthermore, $3-2=1\implies 3-(5-3)=1\implies 2(3)-5(1)=1\implies 2(23-5\cdot4)-5=1\implies 2\cdot23-9\cdot5=1\implies 23|\left(1+9\cdot5\right)\implies -9\cdot5\equiv1\pmod{23}$.\\
+			So $5x+1\equiv13\pmod{23}\implies5x\equiv12\pmod{23}\implies-9\cdot5x\equiv-9\cdot12\pmod{23}\implies-45x\equiv-108\pmod{23}\implies \fbox{$x\equiv7\pmod{23}$}$
+			
+			\item $5x+1\equiv13\pmod{26}$\\
+			Notice $\gcd(5,26)=1$ and $26-5(5)=1=\gcd(5,26)$. So $5x+1\equiv13\pmod{26}\implies 5x\equiv12\pmod{26}\implies -5(5)\equiv -5(12)\pmod{26}\implies \fbox{$x\equiv18\pmod{26}$}$
+			
+			\item $9x\equiv3\pmod{5}$\\
+			Notice $\gcd{(9,5)}=1$ and $9(4)+5(-7)=1=\gcd{(9,5)}$. So $9x\equiv3\pmod5\implies4\cdot9x=4\cdot3\pmod5\implies \fbox{$x\equiv12\equiv2\pmod5$}$
+			
+			\item $5x\equiv1\pmod6$ \\
+			Notice $\gcd(5,6)=1$ and $6-5=1=\gcd(5,6)$. So $5x\equiv1\pmod{6}\implies-5x\equiv-1\pmod6\implies \fbox{$x\equiv5\pmod6$}$ 
+			
+			\item $3x\equiv1\pmod{6}$\\
+			By Proposition 3.1.6, $\gcd{(3,6)}\not=1\implies$ there exists no $b\in\Z_n$ such that $3b=1\pmod6$. So this equation has no solutions. 
+		\end{enumerate}
+		
+		\item[3.2] Which of the following multiplication tables defined on the set $G=\left\{a,b,c,d\right\}$ form a group?
+		\begin{enumerate}[(a)]
+			\item is not a group. $a$ is the element such that $a\circ x=x$ for all $x\in G$, however, $x\circ a\not= x$,so (a) is not a group.
+			\item is a group. 
+			\item is a group.
+			\item is not a group because it is not associative. For example, $(b\circ c)  \circ d$ should equal $b\circ(c\circ d)$, but $(b\circ c)  \circ d=d$ and $b\circ(c\circ d)=a$
+		\end{enumerate}
+		
+		\item[3.3] Write out Cayley tables for groups formed by the symmetries of a rectangle and for $\left(\Z_4,+\right)$. 
+		\begin{enumerate}
+			\item Rotations of a rectangle:
+			$\begin{array}{c|cccc}
+				\circ&  id&  \rho_{180^\circ}&  \mu_y&  \mu_x\\ 
+				\hline 
+				id&  id&  \rho_{180^\circ}&  \mu_y&  \mu_x\\ 
+				 
+				\rho_{180^\circ}&  \rho_{180^\circ}&  id&  \mu_x&  \mu_y\\ 
+				 
+				\mu_y&  \mu_y&  \mu_x&  id&  \rho_{180^\circ}\\ 
+				 
+				\mu_x&  \mu_x&  \mu_y&  \rho_{180^\circ}&  id\\
+				 
+			\end{array}$
+			
+			\item $\left(\Z_4,+\right)$:
+			$\begin{array}{c|cccc}
+			+&	[0]&  [1]&  [2]&  [3]\\ 
+			\hline
+			[0]&  [0]&	[1]&  [2]&  [3]\\ 
+			\left[1\right]&  [1]&  [2]&  [3]&  [0]\\ 
+			\left[2\right]&  [2]&  [3]&  [0]&  [1]\\ 
+			\left[3\right]&  [3]&  [0]&  [1]&  [2]
+			\end{array} $
+		\end{enumerate}
+		
+		\item[3.6] Give a multiplication table for the group $U(12)$. \\
+		$U(n)=\left\{x\in\Z_n|\gcd(n,x)=1\right\}\implies U(12)=\left\{1,5,7,11\right\}$.\\
+		$\begin{array}{c|cccc}
+			\cdot&  1&  5&  7&  11\\ 
+			\hline
+			1&  1&  5&  7&  11\\ 
+			5&  5&  1&  11&  7\\ 
+			7&  7&  11&  1&  5\\ 
+			11&  11&  7&  5&  1
+		\end{array} $
+		
+		\item[3.7] Let $S=\mathbb{R}\setminus\left\{-1\right\}$ and define a binary operation on $S$ by $a\ast b=a+b+ab$. Prove that $\left(S,\ast\right)$ is an abelian group.
+		
+		An \textit{abelian group} is a group $G$ such that $a\ast b=b\ast a$ for all $a,b\in G$. 
+		\begin{description}
+			\item[Associative] For all $a,b,c\in G$, $(a\ast b)\ast c=a\ast(b\ast c)$.\\
+			\begin{dmath*}
+				(a\ast b)\ast c=(a\ast b)+c+(a\ast b)c\condition[]{by definition of $a\ast b$} = (a+b+ab)+c+(a+b+ab)c\condition[]{by definition of $a\ast b$} = a+b+c+ab+ac+bc+abc=a+(b+c+bc)+a(b+c+bc)=a+(b\ast c)+a(b\ast c)\condition[]{by definition of $a\ast b$} = a\ast(b\ast c)\condition[]{by definition of $a\ast b$}
+			\end{dmath*}
+			\item[Identity element] There exists an element $e\in G$ such that for any $a\in G$, $e\ast a=a\ast e=a$.\\
+			For any $a$, let $b=0$. Then $a\ast b=a+0+a(0)=a=0+a+0(a)=b\ast a$. So $b=0$ is the identity element such that $a\ast0=0\ast a$ for all $a\in G$. 
+			\item[Inverse element] For each element $a\in G$ there exists an $a^{-1}\in G$ such that $a\ast a^{-1}=a^{-1}\ast a=e$.\\ 
+			We know from above that $e=0$. So given $a\in G$,
+			\begin{dmath*}
+				a+b+ab=0 \implies b(1+a)+a\hiderel{=}0 \implies b\hiderel{=}\frac{-a}{1+a}
+			\end{dmath*} which is defined for all $x\in S$. So $b=\frac{-a}{1+a}$ is the unique inverse element $a^{-1}$ to each $a$ such that $a\ast a^{-1}=a^{-1}\ast a=e$.
+			\item[Commutative] For all $a,b\in G$, $a\ast b=b\ast a$. 
+			\begin{dmath*}
+				a\ast b=a+b+ab=b+a+ab\condition[]{by commutative property of addition} = b+a+ba\condition[]{by commutative property of multiplication}=b\ast a\condition[]{by definition}
+			\end{dmath*}
+			
+		\end{description}
+		So $(S,\ast)$ is an abelian group. \qed 
+		\item[3.10] Prove that the set of matrices of the form $\left[\begin{smallmatrix}
+			1	&x	&y\\
+			0	&1	&z\\
+			0	&0	&1
+		\end{smallmatrix}\right]$ is a group under matrix multiplication. Matrix multiplication in the Heisenberg group is defined by \[
+		\begin{bmatrix}
+		1&  x&  y\\ 
+		0&  1&  z\\ 
+		0&  0&  1
+		\end{bmatrix}
+		\begin{bmatrix}
+		1&  x'&  y'\\ 
+		0&  1&  z'\\ 
+		0&  0&  1
+		\end{bmatrix} 
+		=
+		\begin{bmatrix}
+		1&  x+x'&  y+y'+xz'\\ 
+		0&  1&  z+z'\\ 
+		0&  0&  1
+		\end{bmatrix}  
+		\]
+		
+		\begin{description}
+			\item[Associative] For all $a,b,c\in G$, $(a\cdot b)\cdot c=a\cdot(b\cdot c)$.\\
+			\begin{dmath*}
+				(a\cdot b)\cdot c=
+				\begin{bmatrix}
+					1&  a_xb_y&  a_yb_y+a_xb_z\\ 
+					0&  1&  a_z+b_z\\ 
+					0&  0&  1
+				\end{bmatrix}\cdot c\condition[]{by definition} = 
+				\begin{bmatrix}
+					1&  a_x+b_x+c_x&  a_y+b_y+c_y+a_xb_z+a_xc_z+b_xc_z\\ 
+					0&  1&  a_z+b_z+c_z\\ 
+					0&  1&  1
+				\end{bmatrix}\condition[]{by definition} = 
+				\begin{bmatrix}
+					1&  a_x+\left(b_x+c_x\right)&  a_y+\left(b_y+c_y+b_xc_z\right)+a_x\left(b_z+c_z\right)\\ 
+					0&  1&  a_z+\left(b_z+c_z\right)\\ 
+					0&  0&  1
+				\end{bmatrix} =
+				a\cdot \begin{bmatrix}
+					1&  b_x+c_x&  b_y+c_y+b_xc_z\\ 
+					0&  1&  b_z+c_z\\
+					0&  0&  1
+				\end{bmatrix}\condition[]{by definition} = a\cdot(b\cdot c)\condition[]{by definition}
+			\end{dmath*}
+			\item[Identity element] There exists an element $e\in G$ such that for any $a\in G$, $e\cdot a=a\cdot e=a$.\\
+			Let $e=I_3=\left[\begin{smallmatrix}
+			1&  0&  0\\ 
+			0&  1&  0\\ 
+			0&  0&  1 
+			\end{smallmatrix} \right]$. Then 
+			\begin{dmath*}
+				\begin{bmatrix}
+					1&  x&  y\\ 
+					0&  1&  z\\ 
+					0&  0&  1 
+				\end{bmatrix}
+				\begin{bmatrix}
+					1&  0&  0\\ 
+					0&  1&  0\\ 
+					0&  0&  1
+				\end{bmatrix} 
+				=  
+				\begin{bmatrix}
+					1&  x+0&  y+0+x(0)\\ 
+					0&  1&  z+0\\ 
+					0&  1&  1
+				\end{bmatrix} 
+				= 
+				\begin{bmatrix}
+					1&  x&  y\\ 
+					0&  1&  z\\ 
+					0&  0&  1 
+				\end{bmatrix}
+				=  
+				\begin{bmatrix}
+					1&  0+x&  0+y+0(z)\\ 
+					0&  1&  0+z\\ 
+					0&  1&  1
+				\end{bmatrix} 
+				=
+				\begin{bmatrix}
+					1&  x&  y\\ 
+					0&  1&  z\\ 
+					0&  0&  1 
+				\end{bmatrix}\begin{bmatrix}
+				1&  0&  0\\ 
+				0&  1&  0\\ 
+				0&  0&  1
+			\end{bmatrix} 
+			\end{dmath*} So $e=I_3$ is the identity element such that $e\cdot a=a=a\cdot e$ for all $a\in G$. 
+			
+			\item[Inverse element] For each element $a\in G$ there exists an $a^{-1}\in G$ such that $a\cdot a^{-1}=a^{-1}\cdot a=e$.\\
+			For each $a=\left[\begin{smallmatrix}
+				1	&x	&y\\
+				0	&1	&z\\
+				0	&0	&1
+			\end{smallmatrix}\right]\in G$, it's inverse $a^{-1}$ is given by the inverse matrix of $a$, $a^{-1}=\left[\begin{smallmatrix}
+			1	&-x	&xz-y\\
+			0	&1	&-z\\
+			0	&0	&1
+			\end{smallmatrix}\right]$ (by linear algebra), as \begin{dmath*}
+				a\cdot a^{-1}=\begin{bmatrix}
+					1&  x&  y\\ 
+					0&  1&  z\\ 
+					0&  0&  1 
+				\end{bmatrix}\begin{bmatrix}
+				1&  -x&  xz-y\\ 
+				0&  1&  -z\\ 
+				0&  0&  1
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+				1&  x+(-x)&  y+(xz-y)+x(-z)\\ 
+				0&  1&  z+(-z)\\ 
+				0&  0&  1
+			\end{bmatrix} 
+			=
+			\begin{bmatrix}
+				1&  0&  0\\ 
+				0&  1&  0\\ 
+				0&  0&  1
+			\end{bmatrix}\hiderel{=}I_3
+			=
+			\begin{bmatrix}
+				1&  (-x)+x&  (xz-y)+y+(-x)z\\ 
+				0&  1&  (-z)+z\\ 
+				0&  0&  1
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+				1&  -x&  xz-y\\ 
+				0&  1&  -z\\ 
+				0&  0&  1 
+			\end{bmatrix}\begin{bmatrix}
+			1&  x&  y\\ 
+			0&  1&  z\\ 
+			0&  0&  1
+		\end{bmatrix}=a^{-1}\cdot a
+			\end{dmath*} So $a^{-1}=\left[\begin{smallmatrix}
+			1	&-x	&xz-y\\
+			0	&1	&-z\\
+			0	&0	&1
+		\end{smallmatrix}\right]$ is the unique inverse element to each a such that $a\cdot a^{-1}=a^{-1}\cdot a=e$. 
+			
+		\end{description} So the set of matrices of the form $\left[\begin{smallmatrix}
+		1	&x	&y\\
+		0	&1	&z\\
+		0	&0	&1
+		\end{smallmatrix}\right]$ is a group under matrix multiplication.\qed
+	\end{description}
+\end{document}

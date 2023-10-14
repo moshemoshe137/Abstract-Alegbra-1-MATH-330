@@ -1,0 +1,344 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[margin=1cm]{geometry}
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{breqn}
+\usepackage{enumerate}
+\usepackage{multicol}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Exercise}[section]
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\inv}[1]{#1^{-1}}
+\setcounter{section}{3}
+
+\doublespacing
+\begin{document}
+	\begin{flushright}
+		Moshe Mason Rubin\\MATH 330 Homework \#4\\26 September 2016
+	\end{flushright}
+	
+	
+	\setcounter{theorem}{49}
+	\begin{theorem}
+		Give an example of an infinite group in which every proper sub-group is finite. 
+	\end{theorem}
+	\begin{proof}[Example]
+		Consider the infinite group $\left(\Z,+\right)$. Then any sub-group $S$ of $\Z$ such that $S\subsetneqq\Z$ is necessarily finite. 
+	\end{proof}
+	
+	
+	\setcounter{theorem}{51}
+%	\begin{theorem}
+%		Prove or disprove: Every non-trivial sub-group on a non-abelian group is non-abelian. 
+%	\end{theorem}
+%	\begin{proof}[Counterexample]
+%		Consider the group $D_3=\left\{id,\rho,\rho^2,\tau_A,\tau_B,\tau_C\right\}$ where $id=\left(\begin{smallmatrix}
+%		a & b & c \\ 
+%		a & b & c
+%		\end{smallmatrix} \right)$, $\rho=\left(\begin{smallmatrix}
+%		a & b & c \\ 
+%		b & c & a
+%		\end{smallmatrix} \right)$, $\rho^2=\left(\begin{smallmatrix}
+%		a & b & c \\ 
+%		c & a & b
+%		\end{smallmatrix} \right)$, $\tau_A=\left(\begin{smallmatrix}
+%		a & b & c \\ 
+%		a & c & b
+%		\end{smallmatrix} \right)$, $\tau_B=\left(\begin{smallmatrix}
+%		a & b & c \\ 
+%		c & b & a
+%		\end{smallmatrix} \right)$, and $\tau_C=\left(\begin{smallmatrix}
+%		a & b & c \\ 
+%		b & a & c
+%		\end{smallmatrix} \right)$. $D_3$ is non-abelian. For example, \begin{dgroup*}\begin{dmath*}
+%			\tau_A\tau_B=\begin{pmatrix}
+%				a & b & c \\ 
+%				a & c & b
+%			\end{pmatrix}\begin{pmatrix}
+%				a & b & c \\ 
+%				c & b & a
+%			\end{pmatrix} = \begin{pmatrix}
+%				a & b & c \\ 
+%				b & c & a
+%			\end{pmatrix}\hiderel{=}\rho
+%		\end{dmath*}
+%		\begin{dsuspend}
+%			but
+%		\end{dsuspend}
+%		\begin{dmath*}
+%			\tau_B\tau_A=\begin{pmatrix}
+%				a & b & c \\ 
+%				c & b & a
+%			\end{pmatrix}\begin{pmatrix}
+%				a & b & c \\ 
+%				a & c & b
+%			\end{pmatrix} = \begin{pmatrix}
+%				a & b & c \\ 
+%				c & a & b
+%			\end{pmatrix}\hiderel{=}\rho^2
+%		\end{dmath*}
+%		\end{dgroup*} However, consider $R\subsetneqq D_3$ given by $R=\left\langle\rho\right\rangle=\left\{id,\rho,\rho^2\right\}$. Then $R$ is a non-trivial sub-group of $D_3$, but $R$ is abelian, as can be checked brute-force from the Cayley table of $R$: $$\begin{array}{c|ccc}
+%		& id & \rho & \rho^2 \\ \hline
+%		id & id & \rho & \rho^2 \\ 
+%		\rho & \rho & \rho^2 & id \\ 
+%		\rho^2 & \rho^2 & id & \rho
+%		\end{array}$$ So $D_3$ is a non-abelian group that has a non-trivial abelian sub-group. 
+%	\end{proof}
+	
+	
+	\setcounter{theorem}{52}
+	\begin{theorem}
+		Let $H$ be a sub-group of $G$ and $$C(H)=\left\{g\in G: gh=hg \text{ for all } h\in H\right\}.$$ Prove that $C(H)$ is a sub-group of $G$. This subgroups is called the \textit{\textbf{centralizer}} of $H$ in $G$. 
+	\end{theorem}
+	\begin{proof}
+		By theorem from class, for $C(H)\subseteq G$ to be a sub-group of $G$, it is sufficient to show 
+		\begin{enumerate}
+			\item For all $a,b\in C(H)$, $a\circ b\in C(H)$.
+			
+			\item There exists $e\in C(H)$ such that $a\circ e=a=e\circ a$ for all $a\in C(H)$. 
+			
+			\item For all $a\in C(H)$ there exists $\inv{a}\in C(H)$ such that $a\circ\inv{a}=e=\inv{a}\circ a$.
+			
+			\setcounter{enumi}{0}
+			
+			\item Let $a,b\in C(H)$. Then $a,b\in G$ as $C(H)$ is a subset of $G$. Furthermore, $h\in G$ as $h\in H$ and $H$ is a sub-group of $G$. Consider the expression \begin{dmath*}
+				h\circ \left(a \circ b\right) = \left(h\circ a\right)\circ b \condition[]{by associativity of elements of $G$} = \left(a\circ h\right)\circ b \condition[]{by assumption that $a\in C(H)$} = a\circ(h\circ b) \condition[]{by associativity of elements of $G$} = a\circ (b\circ h) \condition[]{by assumption that $b\in C(H)$} = (a\circ b)\circ h \condition[]{by associativity of elements of $G$}
+			\end{dmath*} So $h\circ(a\circ b)=(a\circ b)\circ h$ for all $h\in H$. So $(a\circ b)\in C(H)$ by definition of $C(H)$. So $C(H)$ is closed under $\circ$. 
+			
+			\item $e$ is an elements of $G$ by assumption that $G$ is a group. $H$ is a sub-group of $G$ means that the same $e$ is identity in $H$. By definition, the identity $e$ in $H$ commutes with any group element in $H$. That is, $e\circ h=h\circ e=h$ for all $h\in H$. So $e\circ h=h\circ e\implies e\in C(H)$ by definition of $C(H)$. 
+			
+			\item Let $a\in C(H)$. Then $a\in G$ as $C(H)\subseteq G$. Then $\inv{a}\in G$ by assumption that $G$ is a group. Then \begin{dmath*}
+				a\circ h \hiderel{=} h\circ a \implies \left(a\circ h\right)\circ \inv{a} \hiderel{=} \left(h\circ a\right)\circ \inv{a} \implies \inv{a}\circ\left[\left(a\circ h\right)\circ \inv{a}\right] \hiderel{=} \inv{a}\circ\left[\left(h\circ a\right)\circ \inv{a}\right] \implies \left(\inv{a}\circ a\right)\circ \left(h\circ\inv{a}\right) \hiderel{=} \left(\inv{a}\circ h\right)\circ \left(a\circ\inv{a}\right) \condition[]{by multiple applications of associativity in $G$} \implies e\circ\left(h\circ \inv{a}\right) \hiderel{=} \left(\inv{a}\circ h\right)\circ e \condition[]{by definition of $\inv{a}\in G$} \implies h\circ\inv{a} \hiderel{=} \inv{a}\circ h \condition[]{by definition of $e$}
+			\end{dmath*} So $\inv{a}\in C(H)$ by definition. So $a\in C(H)$ implies that $\inv{a}\in C(H)$. 
+		\end{enumerate} So this shows that $C(H)$ is a sub-group of $G$.
+	\end{proof}
+
+
+	\begin{theorem}
+		Let $H$ be a sub-group of $G$. If $g\in G$, show that $gH\inv{g}:=\left\{\inv{g}hg: h\in H\right\}$ is also a sub-group of $G$. 
+	\end{theorem}
+	\begin{proof}
+		By theorem from class, for $gH\inv{g}\subseteq G$ to be a sub-group of $G$, it is sufficient to show 
+		\begin{enumerate}
+			\item For all $a,b\in gH\inv{g}$, $a\circ b\in gH\inv{g}$.
+			
+			\item There exists $e\in gH\inv{g}$ such that $a\circ e=a=e\circ a$ for all $a\in gH\inv{g}$. 
+			
+			\item For all $a\in gH\inv{g}$ there exists $\inv{a}\in gH\inv{g}$ such that $a\circ\inv{a}=e=\inv{a}\circ a$.
+		\end{enumerate}
+		Notice that $gH\inv{g}$ is necessarily a subset of $G$ as every element in $H$ is contained in $G$ (by assumption that $H$ is a sub-group of $G$). So $g,h,\inv{g}\in G$. Furthermore, every element in $gH\inv{g}$ is of the form $\inv{g}hg$, and $G$ is closed by assumption that $G$ is a group. So $gH\inv{g}\subseteq G$.\\
+		Let $a,b\in gH\inv{g}$. Then $a=\inv{g}h_ag$ and $b=\inv{g}h_bg$ for some $h_a,h_b\in H$. 
+		\begin{enumerate}
+			\item Consider \begin{dmath*}
+				ab = \left(\inv{g}h_ag\right)\left(\inv{g}h_bg\right) = \left(\inv{g}h_a\right)\left(g\inv{g}\right)\left(h_bg\right) \condition[]{by associativity of elements of $G$} = \left(\inv{g}h_a\right)\left(e\right)\left(h_bg\right) \condition[]{by definition of $\inv{g}$} = \left(\inv{g}h_a\right)\left(h_bg\right) \condition{by definition of $e$} = \inv{g}\left(h_ah_b\right)g \condition[]{by associativity of elements of $G$}
+			\end{dmath*} and $\left(h_ah_b\right)\in H$ as $H$ was assumed to be a sub-group, so $H$ is closed. So $ab=\inv{g}\left(h_ah_b\right)g$ is of the form $\inv{g}hg$ for some $h\in H$. So $gH\inv{g}$ is closed. 
+			
+			\item By assumption that $H$ is a sub-group of $G$, $e\in H$. So $\left(\inv{g}eg\right)\in gH\inv{g}$ and \begin{dmath*}
+				\inv{g}eg = \inv{g}g \condition[]{by definition of $e$} = e \condition{by definition of $\inv{g}$}.
+			\end{dmath*} So $\left(\inv{g}eg\right)\in gH\inv{g}$ and $\inv{g}eg=e$. so $e\in gH\inv{g}$. 
+			
+			\item By Proposition 3.4, if $a=\inv{g}h_ag$ then $\inv{a}=\inv{g}\inv{h_a}g$. So $\inv{a}\in gH\inv{g}$ if $\inv{h_a}\in H$, and $\inv{h_a}$ is necessarily an element of $H$ by assumption that $H$ is a sub-group of $G$. So $a\in gH\inv{g}\implies \inv{a}\in gH\inv{g}$. 
+		\end{enumerate} So this shows that $gH\inv{g}$ is a sub-group of $G$. 
+	\end{proof}
+
+
+	\setcounter{section}{4}
+	\setcounter{theorem}{0}
+	\begin{theorem}
+		Prove or disprove each of the following statements.
+		\begin{enumerate}[(a)]
+			\item $U(8)$ is cyclic 
+			\item All of the generators of $\Z_{60}$ are prime. 
+			\item $\mathbb{Q}$ is cyclic.
+			\item If every proper sub-group of a group $G$ is cyclic, then $G$ is a cyclic group. 
+			\item A group with a finite number of sub-groups is finite. 
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		\begin{enumerate}[(a)]
+			\item $U(8)$ is not cyclic as $U(8)=\left\{1,3,5,7\right\}$ and $1^2\equiv 3^2\equiv 5^2\equiv 7^2\equiv 1\pmod 8$. So there does not exist $g\in U(8)$ such that $\left\langle g\right\rangle=U(8)$. 
+			
+			\item $1$ is a generator of $\Z_{60}$ as $\left\langle1\right\rangle:=\left\{n\cdot1:n\in\Z\right\}=\Z_{60}$, so not all generators of $\Z_{60}$ are prime. 
+			
+			\item Consider $\frac{1}{2}\in\mathbb{Q}$. Then there does not exist an $x\in\mathbb{Q}$ such that $x^n=\frac{1}{2}$ for some $n\in\N$. So $\mathbb{Q}$ is not cyclic. 
+			
+			\item As demonstrated in Example 5, every proper sub-group of the symmetries of an equilateral triangle $S_3$ is cyclic, however $S_3$ itself is not cyclic. So (d) is false. 
+			
+			\item 
+		\end{enumerate}
+	\end{proof}
+
+
+	\begin{theorem}
+		Find the order of each of the following elements.
+		\begin{multicols}{3}
+			\begin{enumerate}[(a)]
+			\item $5\in\Z_12$
+			\item $\sqrt{3}\in\R$
+			\item $\sqrt{3}\in\R^*$
+			\item $-i\in\mathbb{C}^*$
+			\item $72\in\Z_{240}$
+			\item $312\in\Z_{471}$
+		\end{enumerate}
+		\end{multicols}
+	\end{theorem}
+	\begin{proof}
+		\begin{enumerate}[(a)]
+			\item $5(5)-12(2)=1\implies 5\cdot 5\equiv 1\pmod{12}\implies|5|=5$
+			\item $\sqrt{3}^n=1$ for $n\in\N$ is a contradiction. So $|\sqrt{3}|=\infty$. 
+			\item $\sqrt{3}^n=1$ for $n\in\N$ is a contradiction. So $|\sqrt{3}|=\infty$. 
+			\item $\left(-i\right)^4=\left(-1\right)^4\left(i\right)^4=1$. So $|-i|=4$. 
+			\item $\gcd\left(72,240\right)=24$ so $|72|=\infty$ as there does not exist $n\in\N$ such that $72\cdot n\equiv1\pmod{240}$. 
+			\item $\gcd\left(312,471\right)=3$ so $|312|=\infty$. 
+		\end{enumerate}
+	\end{proof}
+
+
+	\setcounter{theorem}{3}
+	\begin{theorem}
+		Find the subgroups of $GL_2\left(\R\right)$ generated by each of the following matrices.
+		\begin{multicols}{3}
+		\begin{enumerate}[(a)]
+			\item $\begin{pmatrix}
+				0 & 1 \\ 
+				-1 & 0
+			\end{pmatrix}$			
+			\item $\begin{pmatrix}
+			0 & \frac{1}{3} \\ 
+			3 & 0
+			\end{pmatrix} $ 
+			\item $\begin{pmatrix}
+				1 & -1 \\ 
+				1 & 0
+			\end{pmatrix}$
+			\item $\begin{pmatrix}
+			1 & -1 \\ 
+			0 & 1
+			\end{pmatrix} $
+			\item $\begin{pmatrix}
+			1 & -1 \\ 
+			-1 & 0
+			\end{pmatrix} $ 
+			\item $\begin{pmatrix}
+			\frac{\sqrt{3}}{2} & \frac{1}{2} \\ 
+			-\frac{1}{2} & \frac{\sqrt{3}}{2}
+			\end{pmatrix} $
+		\end{enumerate}
+		\end{multicols}
+	\end{theorem}
+	\begin{proof}
+		\begin{enumerate}[(a)]
+			\item Notice $A^2=\left[\begin{smallmatrix}
+			-1 & 0 \\ 
+			0 & -1
+			\end{smallmatrix}\right]$, $A^3=\inv{A}=-A$, $A^4=-A^2$, and $A^5=A^1=A$. So $\left\langle\left[\begin{smallmatrix}
+			0 & 1 \\ 
+			-1 & 0
+			\end{smallmatrix}\right]\right\rangle=\left\{\pm\left[\begin{smallmatrix}
+			0 & 1 \\ 
+			-1 & 0
+			\end{smallmatrix}\right],\pm\left[\begin{smallmatrix}
+			-1 & 0 \\ 
+			0 & -1
+			\end{smallmatrix}\right]\right\}$
+			
+			\item Notice $\inv{A}=A$. So $\left\langle\left[\begin{smallmatrix}
+			0 & \frac{1}{3} \\ 
+			3 & 0
+			\end{smallmatrix} \right]\right\rangle=\left\{\left[\begin{smallmatrix}
+			0 & \frac{1}{3} \\ 
+			3 & 0
+			\end{smallmatrix} \right], I_2\right\}$
+			
+			\item Notice \begin{multicols}{3}
+			\begin{itemize}
+				\item $A^2=\left[\begin{smallmatrix}
+				0 & -1 \\ 
+				1 & -1
+				\end{smallmatrix}\right] $
+				
+				\item $A^3=A^2A=\left[\begin{smallmatrix}
+				-1 & 0 \\ 
+				0 & -1
+				\end{smallmatrix}\right] $
+				
+				\item $A^4=A^3A=\left[\begin{smallmatrix}
+				-1 & 1 \\ 
+				-1 & 0
+				\end{smallmatrix}\right] =-A$
+				
+				\item $A^5=A^4A=-A^2$
+				
+				\item $A^6=A^4A^2=-A^3=I_2$
+				
+				\item $A^7=A^4A^3=-A^4=A$
+			\end{itemize}
+			\end{multicols} So $\left\langle\left[\begin{smallmatrix}
+			1 & -1 \\ 
+			1 & 0
+			\end{smallmatrix} \right]\right\rangle=\left\{\pm id, \pm A, \pm A^2\right\}$. 
+			
+			\item Notice $\inv{A}=\left[\begin{smallmatrix}
+			1 & 1 \\ 
+			0 & 1
+			\end{smallmatrix} \right]$ and $A^n=\left[\begin{smallmatrix}
+			1 & -n \\ 
+			0 & 1
+			\end{smallmatrix} \right]$ for $n\in\N$. So $\left\langle\left[\begin{smallmatrix}
+			1 & -1 \\ 
+			0 & 1
+			\end{smallmatrix} \right]\right\rangle=\left\{\left[\begin{smallmatrix}
+			1 & n \\ 
+			0 & 1
+			\end{smallmatrix} \right]:n\in\N\right\}$.
+		\end{enumerate}
+	\end{proof}
+
+
+	\setcounter{theorem}{5}
+	\begin{theorem}
+		Find the order of every element in the symmetry group of the square, $D_4$. 
+	\end{theorem}
+	\begin{proof}
+		Copy-paste from my last homework, the symmetries of a square are $$\begin{array}{c|cccccccc}
+		\circ & id & \rho & \rho^2 & \rho^3 & \mu_{x=0} & \mu_{y=0} & \mu_{y=x} & \mu_{y=-x} \\ \hline
+		id & id & \rho & \rho^2 & \rho^3 & \mu_{x=0} & \mu_{y=0} & \mu_{y=x} & \mu_{y=-x} \\ 
+		\rho & \rho &  \rho^2&  \rho^3&  id&  \mu_{y=x}&  \mu_{y=-x}&  \mu_{y=0}&  \mu_{x=0}\\ 
+		\rho^2&  \rho^2&  \rho^3&  id&  \rho&  \mu_{y=0}&  \mu_{x=0}&  \mu_{y=-x}&  \mu_{y=x}\\ 
+		\rho^3&  \rho^3&  id&  \rho&  \rho^2&  \mu_{y=-x}&  \mu_{y=x}&  \mu_{x=0}&  \mu_{y=0}\\ 
+		\mu_{x=0}&  \mu_{x=0}&  \mu_{y=-x}&  \mu_{y=0}&  \mu_{y=x}&  id&  \rho^2&  \rho^3&  \rho\\ 
+		\mu_{y=0}&  \mu_{y=0}&  \mu_{y=x}&  \mu_{y=0}&  \mu_{y=-x}&  \rho^2&  id&  \rho&  \rho^3\\ 
+		\mu_{y=x}&  \mu_{y=x}&  \mu_{x=0}&  \mu_{y=-x}&  \mu_{y=0}&  \rho&  \rho^3&  id&  \rho^2\\ 
+		\mu_{y=-x}&  \mu_{y=-x}&  \mu_{y=0}&  \mu_{y=x}&  \mu_{x=0}&  \rho^3&  \rho&  \rho^2&  id 
+		\end{array} $$ 
+		So $|id|=1$, $|\rho|=4$, and $|\mu_{x=0}|=|\mu_{y=0}|=|\mu_{y=x}|=|\mu_{y=-x}|=2$. 
+	\end{proof}
+
+
+	\setcounter{theorem}{11}
+	\begin{theorem}
+		Find a cyclic group with exactly one generator. Can you find cyclic groups with exactly two generators? Four generators? How about $n$ generators? 
+	\end{theorem}
+	\begin{proof}
+		By Corollary 4.7, the only generator of $\Z_{60}$ is $1$ as $1$ is the only number $<60$ and co-prime to $60$. 
+		
+		$Z_6$ has two generators, $1$ and $5$ as $1$ and $5$ are the only numbers $<6$ that are co-prime to $6$. 
+		
+		$Z_8$ has two generators, $1, 3, 5$ and $7$ as those are the numbers co-prime to $8$. 
+	\end{proof}
+
+
+
+	
+	
+	
+	
+
+\end{document}

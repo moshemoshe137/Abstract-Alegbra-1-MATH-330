@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[twoside, margin=1cm]{geometry}
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace} %for Double Spacing
+\usepackage{breqn}
+\usepackage{enumerate}
+\usepackage{multicol}
+%\usepackage{pgfplots}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Exercise}[section]
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\heq}{ \hiderel{=} }
+\newenvironment{sbmatrix}{\left[\begin{smallmatrix}}{\end{smallmatrix}\right]}
+
+\DeclareMathOperator{\ord}{ord}
+\setcounter{section}{17}
+
+
+%\doublespacing
+%\onehalfspacing
+\begin{document}
+	\begin{flushright}
+		Moshe Mason Rubin\\MATH 330 Homework \#10\\2 December 2016
+	\end{flushright}
+	
+	
+	\setcounter{theorem}{2}
+	\begin{theorem}
+		Use the division algorithm to find $q(x)$ and $r(x)$ such that $a(x) = q(x)b(x) + r(x)$ with $\deg r(x) < \deg b(x)$ for each of the following pairs of polynomials.
+		\begin{multicols}{2}
+		\begin{enumerate}[(a)]
+			\setcounter{enumi}{2}
+			\item $a(x) = 4x^5 - x^3 + x^2 + 4$ and $b(x) = x^3 - 2 $ in $\Z_7[x]$
+			\item $a(x) = x^5 + x^3 - x^2 - x$ and $b(x) = x^3 + x$ in $\Z_2[x]$
+		\end{enumerate}
+		\end{multicols}
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+	
+	\begin{theorem}
+		Find the greatest common divisor of each of the following pairs $p(x)$ and $q(x)$ of polynomials. If $d(x) = \gcd\left( p(x), q(x) \right)$, find two polynomials $a(x)$ and $b(x)$ such that $a(x)p(x) + b(x)q(x) = d(x)$. 
+%		\begin{multicols}{1}
+		\begin{enumerate}[(a)]
+			\item 	$p(x) = 7x^3 + 6x^2 - 8x + 4$ and $q(x) = x^3+x-2$ where $p(x), q(x) \in \Q[x]$
+			\item 	$p(x) = x^3 + x^2 - x + 1$ and $q(x) = x^3+x-1$ where $p(x), q(x) \in \Z_2[x]$
+		\end{enumerate}
+%		\end{multicols}
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+
+	\setcounter{theorem}{10}
+	\begin{theorem}
+		Prove or disprove: There exists a polynomial $p(x)$ in $\Z_6[x]$ of degree $n$ with more than $n$ distinct zeros.
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+
+	\setcounter{theorem}{18}
+	\begin{theorem}
+		Let $\Q^*$ be the multiplicative group of positive rational numbers. Prove that $\Q^*$ is isomorphic to $\left( \Z[x], +\right)$.
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+	
+	\setcounter{theorem}{20}
+	\begin{theorem}
+		If $F$ is a field, show that there are infinitely many irreducible polynomials in $F[x]$. 
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+	
+	
+\end{document}

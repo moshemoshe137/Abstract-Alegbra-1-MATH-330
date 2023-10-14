@@ -1,0 +1,379 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[margin=1cm]{geometry}
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{breqn}
+\usepackage{enumerate}
+\theoremstyle{definition}
+\newtheorem{theorem}{Exercise}[section]
+\newenvironment{Proof}
+
+%\theoremstyle{plain} % just in case the style had changed
+%\newcommand{\thistheoremname}{}
+%\newtheorem*{genericthm}{\thistheoremname}
+%\newenvironment{namedthm}[1]
+%{\renewcommand{\thistheoremname}{#1}%
+%	\begin{genericthm}}
+%	{\end{genericthm}}
+
+
+\makeatletter
+\renewenvironment{Proof}[1][\proofname]{\par
+	\pushQED{\qed}%
+	\normalfont \topsep6\p@\@plus6\p@\relax
+	\trivlist
+	\item\relax
+	{\itshape
+		#1\@addpunct{:}}\hspace\labelsep\ignorespaces
+}{%
+\popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\inv}[1]{#1^{-1}}
+\setcounter{section}{3}
+
+\doublespacing
+\begin{document}
+	\begin{flushright}
+		Moshe Mason Rubin\\MATH 330 Homework \#3\\19 September 2016
+	\end{flushright}
+	
+%	\begin{namedthm}{Moshe} 
+%		lol
+%	\end{namedthm}
+
+	\setcounter{theorem}{7}
+	\begin{theorem}
+		Give an example of two elements $A$ and $B$ in $GL_2(\R)$ with $AB\not=BA$. 
+	\end{theorem}
+	\begin{proof}[Solution]
+		Let $A=\left[\begin{smallmatrix}
+		1&  2\\ 
+		3&  4
+		\end{smallmatrix} \right]$ and $B=\left[\begin{smallmatrix}
+		5&  6\\ 
+		7&  8
+		\end{smallmatrix} \right]$. Then $A,B\in GL_2(\R)$ as $A^{-1}$ and $B^{-1}$ are given by $A^{-1}=\left[\begin{smallmatrix}
+		-2&  1\\ 
+		\frac{3}{2}& -\frac{1}{2} 
+		\end{smallmatrix} \right]$ and ${B^{-1}=\left[\begin{smallmatrix}
+		-4&  3\\ 
+		\frac{7}{2}&  -\frac{5}{2}
+		\end{smallmatrix} \right]}$. However, \[
+		AB = \begin{bmatrix}
+		19 & 22 \\ 
+		43 & 50
+		\end{bmatrix} \not = \begin{bmatrix}
+		23 & 34 \\ 
+		31 & 46
+		\end{bmatrix} =BA
+		\] So $BA\not=AB$ for $A=\left[\begin{smallmatrix}
+		1&  2\\ 
+		3&  4
+		\end{smallmatrix} \right]$ and $B=\left[\begin{smallmatrix}
+		5&  6\\ 
+		7&  8
+		\end{smallmatrix} \right]$.
+	\end{proof}
+	
+	
+	\setcounter{theorem}{11}
+	\begin{theorem}
+		Let $\Z_2^n=\left\{\left(a_1,a_2,\ldots,a_n\right):a_i\in\Z_2\right\}$. Define a binary operation on $\Z^n_2$ by \[
+		\left(a_1,a_2,\ldots,a_n\right)+\left(b_1,b_2,\ldots,b_n\right)=\left(a_1+b_1,a_2+b_2,\ldots,a_n+b_n\right).
+		\] 
+	\end{theorem} Prove that $\Z_2^n$ is a group under this operation. 
+	\begin{Proof}\hfill 
+		\begin{description}
+			\item[Associative] Let $a,b,c\in\Z_2^n$ such that $a=\left(a_1,a_2,\ldots,a_n\right)$, $b=\left(b_1,b_2,\ldots,b_n\right)$, and $c=\left(c_1,c_2,\ldots,c_n\right)$. Then \begin{dmath*}
+				(a+b)+c=\left(a_1+b_1,a_2+b_2,\ldots,a_n+b_n\right)+c \condition[]{by definition of $a+b$} = \left(\left(a_1+b_1\right)+c_1,\left(a_2+b_2\right)+c_2,\ldots,\left(a_n+b_n\right)+c_n\right) \condition[]{by definition of a+b} = \left(a_1+\left(b_1+c_1\right),a_2+\left(b_2+c_2\right),\ldots,a_n+\left(b_n+c_n\right)\right) \condition[]{by associativity of real addition} = a+\left(b_1+c_1,b_2+c_2,\ldots,b_n+c_n\right) \condition[]{by definition of $a+b$} = a+(b+c) \condition[]{by definition of $a+b$}
+			\end{dmath*} So $+$ is associative in $\Z^n_2$. 
+			
+			\item[Identity] For $a\in\Z_2^n$ let $b$ be given by $b=(0,0,\ldots,0)$. Then $b\in\Z_2^n$ as $0\in\Z_2$. Then \begin{dgroup*}\begin{dmath*}
+				a+b=\left(a_1+0,a_2+0,\ldots,a_n+0\right) \condition[]{by definition of $a+b$} = \left(a_1,a_2,\ldots,a_n\right) \condition[]{as $0$ is the additive identity in $\Z^n_2$}
+			\end{dmath*}
+			\begin{dmath}= \label{1}a \condition[]{by definition of $a$}
+			\end{dmath}
+			\begin{dmath*}
+				=\left(0+a_1,0+a_2,\ldots,0+a_n\right) \condition[]{as $0$ is the additive identity in $\Z^n_2$}
+			\end{dmath*}
+			\begin{dmath} =\label{2}b+a \condition[]{by definition of $a+b$}
+			\end{dmath}\end{dgroup*} So \eqref{1} and \eqref{2} imply that $a+b=a=b+a$ for $b\in\Z_2^n$ given by $b=(0,0,\ldots,0)$. So there exists an identity in $\Z^n_2$ under $+$. 
+			
+			\item[Inverse] For $a\in\Z^n_2$ let $b=a$. Then \begin{dgroup*}\begin{dmath*}
+				a+b = (\left[a_1+b_1\right]_2,\left[a_2+b_2\right]_2,\ldots,\left[a_n+b_n\right]_2) \condition[]{by definition of $a+b$}= (\left[2a_1\right]_2,\left[2a_2\right]_2,\ldots,\left[2a_n\right]_2) \condition[]{as $a_i=b_i$ for $i\in\left(\Z\cap\left[1,n\right]\right)$}\end{dmath*}\begin{dmath} \label{3_1}= (0,0,\ldots,0) \condition[]{as $\left[2k\right]_2=0$ for all $k\in\Z$. Notice $(0,0,\ldots,0)$ is the additive inverse from above.} \end{dmath}\begin{dmath*} = (\left[2a_1\right]_2,\left[2a_2\right]_2,\ldots,\left[2a_n\right]_2)\hiderel{=}\left(\left[b_1+a_1\right]_2,\left[b_2+a_2\right]_2,\ldots \left[b_n+a_n\right]_2\right) \condition[]{as $a_i=b_i$ for $i\in\left(\Z\cap\left[1,n\right]\right)$}\end{dmath*}\begin{dmath} = \label{4_1} b+a \condition[]{by definition of $a+b$}
+			\end{dmath}\end{dgroup*} So \eqref{3_1} and \eqref{4_1} imply that for all $a\in\Z_2^n$, $a$ is its own inverse element under $+$.
+		\end{description}
+		So $(\Z_2^n,+)$ is a group. 
+	\end{Proof}
+	
+	\setcounter{theorem}{14}
+	\begin{theorem}
+		Prove or disprove that every group containing six elements is abelian. 
+	\end{theorem}
+	\begin{proof}[Counterexample]
+		Consider the group $D_3=\left\{id,\rho,\rho^2,\tau_A,\tau_B,\tau_C\right\}$ which contains exactly 6 elements with $id=\left(\begin{smallmatrix}
+		a & b & c \\ 
+		a & b & c
+		\end{smallmatrix} \right)$, $\rho=\left(\begin{smallmatrix}
+		a & b & c \\ 
+		b & c & a
+		\end{smallmatrix} \right)$, $\rho^2=\left(\begin{smallmatrix}
+		a & b & c \\ 
+		c & a & b
+		\end{smallmatrix} \right)$, $\tau_A=\left(\begin{smallmatrix}
+		a & b & c \\ 
+		a & c & b
+		\end{smallmatrix} \right)$, $\tau_B=\left(\begin{smallmatrix}
+		a & b & c \\ 
+		c & b & a
+		\end{smallmatrix} \right)$, and $\tau_C=\left(\begin{smallmatrix}
+		a & b & c \\ 
+		b & a & c
+		\end{smallmatrix} \right)$. $D_3$ is \textit{not} abelian. For example, \begin{dgroup*}\begin{dmath*}
+			\tau_A\tau_B=\begin{pmatrix}
+			a & b & c \\ 
+			a & c & b
+			\end{pmatrix}\begin{pmatrix}
+			a & b & c \\ 
+			c & b & a
+			\end{pmatrix} = \begin{pmatrix}
+			a & b & c \\ 
+			b & c & a
+		\end{pmatrix}\hiderel{=}\rho
+		\end{dmath*}
+		\begin{dsuspend}
+			but
+		\end{dsuspend}
+		\begin{dmath*}
+		\tau_B\tau_A=\begin{pmatrix}
+			a & b & c \\ 
+			c & b & a
+		\end{pmatrix}\begin{pmatrix}
+			a & b & c \\ 
+			a & c & b
+		\end{pmatrix} = \begin{pmatrix}
+			a & b & c \\ 
+			c & a & b
+		\end{pmatrix}\hiderel{=}\rho^2
+		\end{dmath*}
+		\end{dgroup*} So $D_3$ is an example of a group containing 6 elements that is not abelian. 
+	\end{proof}
+	
+	
+	\setcounter{theorem}{25}
+	\begin{theorem}
+		Prove that the inverse of $g_1g_2\cdots g_n$ is $g_n^{-1}g_{n-1}^{-1}\cdots g_1^{-1}$.
+	\end{theorem}
+	\begin{proof}
+		\begin{description}
+			\item[Base case $\mathbf{n=2}$] If $n=2$ then $g_2^{-1}g_1^{-1}$ is the inverse of $g_1g_2$ as 
+			\begin{dgroup*}
+			\begin{dmath*}
+				\left(g_1g_2\right)\left(g_2^{-1}g_1^{-1}\right)=g_1\left(g_2g_2^{-1}\right)g_1^{-1} \condition[]{by associativity} = g_1(e)\inv{g_1} \condition[]{by definition of $\inv{g_2}$} = g_1\inv{g_1} \condition[]{by definition of $e$}
+			\end{dmath*}
+			\begin{dmath}
+				= \label{3} e \condition[]{by definition of $\inv{g_1}$} 
+			\end{dmath}
+			\begin{dmath*}
+				= \inv{g_2}g_2 \condition[]{by definition of $\inv{g_2}$} =\inv{g_2}(e)g_2 \condition[]{by definition of $e$} = \inv{g_2}\left(\inv{g_1}g_1\right)g_2 \condition[]{by definition of $\inv{g_1}$}
+			\end{dmath*}
+			\begin{dmath}
+				= \label{4} \left(\inv{g_2}\inv{g_1}\right)\left(g_1g_2\right)
+			\end{dmath}
+			\end{dgroup*} So \eqref{3} and \eqref{4} imply that $\left(\inv{g_2}\inv{g_1}\right)$ is unique inverse element such that $\left(g_1g_2\right)\left(g_2^{-1}g_1^{-1}\right)=e=\left(\inv{g_2}\inv{g_1}\right)\left(g_1g_2\right)$.
+			
+			\item[Assume $\mathbf{\inv{\left(g_1g_2\cdots g_n\right)}=\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_1}}$ for some $\mathbf{n\in\mathbb{N}}$ and show that $\mathbf{\inv{\left(g_1g_2\cdots g_ng_{n+1}\right)}=\inv{g_{n+1}}\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_1}}$:] \hfill \\ Consider 
+			\begin{dgroup*}
+			\begin{dmath*}
+				\left(g_1g_2\cdots g_{n-1}g_ng_{n+1}\right)\left(\inv{g_{n+1}}\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_2}\inv{g_1}\right) = \left(g_1g_2\cdots g_{n-1}g_n\right)\left(g_{n+1}\inv{g_{n+1}}\right)\left(\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_2}\inv{g_1}\right) \condition[]{by associativity} = \left(g_1g_2\cdots g_{n-1}g_n\right)\left(e\right)\left(\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_2}\inv{g_1}\right) \condition[]{by definition of $\inv{g_{n+1}}$} = \left(g_1g_2\cdots g_{n-1}g_n\right)\left(\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_2}\inv{g_1}\right) \condition[]{by definition of $e$} 
+			\end{dmath*}
+			\begin{dmath}
+				\left(g_1g_2\cdots g_{n-1}g_ng_{n+1}\right)\left(\inv{g_{n+1}}\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_2}\inv{g_1}\right) =\label{5}e \condition[]{by inductive hypothesis}
+			\end{dmath}
+			\begin{dmath*}
+				=\inv{g_{n+1}}g_{n+1} \condition[]{by definition of $\inv{g_{n+1}}$} =\left(\inv{g_{n+1}}\right)(e)\left(g_{n+1}\right) \condition[]{by definition of $e$} = \left(\inv{g_{n+1}}\right)\left(\left(\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_2}\inv{g_1}\right)\left(g_1g_2\cdots g_{n-1}g_n\right)\right)\left(g_{n+1}\right) \condition[]{by inductive hypothesis}
+			\end{dmath*}
+			\begin{dmath}
+				\left(g_1g_2\cdots g_{n-1}g_ng_{n+1}\right)\left(\inv{g_{n+1}}\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_2}\inv{g_1}\right) = \label{6} \left(\inv{g_{n+1}}\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_2}\inv{g_1}\right)\left(g_1g_2\cdots g_{n-1}g_ng_{n+1}\right) \condition[]{by associativity}
+			\end{dmath}
+			\end{dgroup*} So by \textbf{Base case}, \eqref{5}, and \eqref{6}, $\inv{\left(g_1g_2\right)}=\inv{g_2}\inv{g_1}$ and $\inv{\left(g_1g_2\cdots g_n\right)}=\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_1}\implies \inv{\left(g_1g_2\cdots g_ng_{n+1}\right)}=\inv{g_{n+1}}\inv{g_n}\inv{g_{n-1}}\cdots\inv{g_1}$.
+		\end{description} So the inverse of $g_1g_2\cdots g_n$ is $g_n^{-1}g_{n-1}^{-1}\cdots g_1^{-1}$ for all $n\in\N$. 
+	\end{proof}
+	
+	
+	\setcounter{theorem}{29}
+	\begin{theorem}
+		Show that if $a^2=e$ for all elements $a$ in a group $G$, then $G$ must be abelian. 
+	\end{theorem}
+	\begin{proof}
+		Let $a,b\in G$. Then $\left(a\circ b\right)\in G$ by the assumption that $G$ is a group. Then $a,b,\left(a\circ b\right)\in G\implies a^2=b^2=\left(a\circ b\right)^2=e$ by the assumption that $a^2=e$ for all elements $a$ in $G$. Then \begin{dmath*}
+			\left(a\circ b\right)^2 \hiderel{=} e \implies \left(a\circ b\right)\circ \left(a\circ b\right) \hiderel{=} e \condition[]{by definition of exponentiation} \implies \left(b\circ a\right)\circ\left[\left(a\circ b\right)\circ\left(a\circ b\right)\right] \hiderel{=} \left(b\circ a\right)\circ e \condition[]{by Proposition 3.2 (that $e$ is unique) and definition of $e$, as $\left(b\circ a\right)\in G$} \implies \left[\left(b\circ a\right)\circ \left(a\circ b\right)\right]\circ\left(a\circ b\right) \hiderel{=} \left(b\circ a\right)\circ e \condition[]{by associativity of elements of $G$} \implies \left[\left(\left(b\circ a\right)\circ a\right)\circ b\right]\circ\left(a\circ b\right) \hiderel{=} \left(b\circ a\right)\circ e \condition[]{by associativity of elements of $G$} \implies \left[\left(b\circ\left(a\circ a\right)\right)\circ b\right]\circ\left(a\circ b\right) \hiderel{=} \left(b\circ a\right)\circ e \condition[]{by associativity of elements of $G$} \implies \left[\left(b\circ e\right)\circ b\right]\circ\left(a\circ b\right) \hiderel{=} \left(b\circ a\right)\circ e \condition[]{by assumption that $a\circ a=e$ for all $a\in G$} \implies \left[b\circ b\right]\circ\left(a\circ b\right) \hiderel{=} b\circ a \condition[]{by definition of $e$} \implies e\circ\left(a\circ b\right) \hiderel{=} b\circ a \condition[]{by assumption that $a\circ a=e$ for all $a\in G$} \implies a\circ b \hiderel{=} b\circ a \condition[]{by definition of $e$}
+		\end{dmath*} So for any $a,b\in G$, the definition of $G$ implies that $\left(a\circ b\right)^2\in G$. So $\left(a\circ b\right)^2=e$ because $\left(a\circ b\right)^2\in G$. We have shown that $\left(a\circ b\right)^2=e \implies a\circ b=b\circ a$ for all $a,b\in G$. So if $a^2=e$ for all elements $a\in G$ then $G$ must be abelian. 
+	\end{proof}
+	
+	
+	\setcounter{theorem}{34}
+	\begin{theorem}
+		Compute the subgroups of the symmetry of a square.
+	\end{theorem}
+	\begin{proof}
+		The symmetries of a square are given by $\rho=\left(\begin{smallmatrix}
+		a & b & c & d \\ 
+		b & c & d & a
+		\end{smallmatrix} \right)$, $\rho^2=\left(\begin{smallmatrix}
+		a & b & c & d \\ 
+		c & d & a & b
+		\end{smallmatrix} \right)$, $\rho^3=\left(\begin{smallmatrix}
+		a & b & c & d \\ 
+		d & a & b & c
+		\end{smallmatrix} \right)$, $\rho^4=id=\left(\begin{smallmatrix}
+		a & b & c & d \\ 
+		a & b & c & d
+		\end{smallmatrix} \right)$, ${\mu_{x=0}=\left(\begin{smallmatrix}
+		a & b & c & d \\ 
+		d & c & b & a
+		\end{smallmatrix} \right)}$, $\mu_{y=0}=\left(\begin{smallmatrix}
+		a & b & c & d \\ 
+		b & a & d & c
+		\end{smallmatrix} \right)$, $\mu_{y=x}=\left(\begin{smallmatrix}
+		a & b & c & d \\ 
+		c & b & a & d
+		\end{smallmatrix} \right)$, and $\mu_{y=-x}=\left(\begin{smallmatrix}
+		a & b & c & d \\ 
+		a & d & c & b
+		\end{smallmatrix} \right)$. Then the sub-groups are the trivial sub-groups: \begin{dgroup*}
+			\begin{dmath}
+				\left\langle id\right\rangle=\left\{id\right\}
+			\end{dmath}\begin{dsuspend}
+				and
+			\end{dsuspend}\begin{dmath}
+			\left\langle D_8\right\rangle =\left\{\rho,\rho^2,\rho^3,\mu_{x=0},\mu_{y=0},\mu_{y=x},\mu_{y=-x},id\right\}
+			\end{dmath}\begin{dsuspend}
+				and the proper non-trivial sub-groups:
+			\end{dsuspend}\begin{dmath}
+				\left\langle\rho\right\rangle \hiderel{=} \left\langle\rho^3\right\rangle=\left\{\rho,\rho^2\rho^3,id\right\}
+			\end{dmath}\begin{dmath}
+				\left\langle\rho^2\right\rangle \hiderel{=} \left\{\rho^2,id\right\}
+			\end{dmath}\begin{dmath}
+				 \left\langle\mu_{x=0}\right\rangle  \hiderel{=}\left\{\mu_{x=0},id\right\}
+			\end{dmath}\begin{dmath}
+				 \left\langle\mu_{y=0}\right\rangle \hiderel{=} \left\{\mu_{y=0},id\right\}
+	  		\end{dmath}\begin{dmath}
+				  \left\langle\mu_{y=x}\right\rangle=\left\{\mu_{y=x},id\right\}
+			\end{dmath}\begin{dsuspend}  
+				   and
+			\end{dsuspend}\begin{dmath}
+				\left\langle\mu_{y=-x}\right\rangle=\left\{\mu_{y=-x},id\right\}
+			\end{dmath}.\begin{dsuspend}
+				Furthermore, 
+			\end{dsuspend}\begin{dmath}\label{unions1}
+				\left\langle\rho^2\right\rangle \cup \left\langle\mu_{x=0}\right\rangle \cup \left\langle\mu_{y=0}\right\rangle=\left\{\rho^2,\mu_{x=0},\mu_{y=0}\right\}
+			\end{dmath}\begin{dsuspend}
+				and
+			\end{dsuspend}\begin{dmath}\label{unions2}
+				\left\langle\rho^2\right\rangle \cup \left\langle\mu_{y=x}\right\rangle \cup \left\langle\mu_{y=-x}\right\rangle=\left\{\rho^2,\mu_{y=x},\mu_{y=-x}\right\}
+			\end{dmath}
+		\end{dgroup*} are proper sub-groups as $id\in\eqref{unions1}$ and $id\in\eqref{unions2}$, any element in \eqref{unions1} and \eqref{unions2} is its own inverse, and \eqref{unions1} and \eqref{unions2} are closed under composition as can be seen in the Cayley table below.\\
+		Besides by theorem from class that $g\in D_8$ implies that $\left\langle g\right\rangle := \left\{g^n|n\in\N\right\}$ is a subgroup of $D_8$ it is clear from the Cayley table that each of these forms a sub-group of $D_8$, including \eqref{unions1} and \eqref{unions2}:
+		$$\begin{array}{c|cccccccc}
+		\circ & id & \rho & \rho^2 & \rho^3 & \mu_{x=0} & \mu_{y=0} & \mu_{y=x} & \mu_{y=-x} \\ \hline
+		id & id & \rho & \rho^2 & \rho^3 & \mu_{x=0} & \mu_{y=0} & \mu_{y=x} & \mu_{y=-x} \\ 
+		\rho & \rho &  \rho^2&  \rho^3&  id&  \mu_{y=x}&  \mu_{y=-x}&  \mu_{y=0}&  \mu_{x=0}\\ 
+		\rho^2&  \rho^2&  \rho^3&  id&  \rho&  \mu_{y=0}&  \mu_{x=0}&  \mu_{y=-x}&  \mu_{y=x}\\ 
+		\rho^3&  \rho^3&  id&  \rho&  \rho^2&  \mu_{y=-x}&  \mu_{y=x}&  \mu_{x=0}&  \mu_{y=0}\\ 
+		\mu_{x=0}&  \mu_{x=0}&  \mu_{y=-x}&  \mu_{y=0}&  \mu_{y=x}&  id&  \rho^2&  \rho^3&  \rho\\ 
+		\mu_{y=0}&  \mu_{y=0}&  \mu_{y=x}&  \mu_{y=0}&  \mu_{y=-x}&  \rho^2&  id&  \rho&  \rho^3\\ 
+		\mu_{y=x}&  \mu_{y=x}&  \mu_{x=0}&  \mu_{y=-x}&  \mu_{y=0}&  \rho&  \rho^3&  id&  \rho^2\\ 
+		\mu_{y=-x}&  \mu_{y=-x}&  \mu_{y=0}&  \mu_{y=x}&  \mu_{x=0}&  \rho^3&  \rho&  \rho^2&  id 
+		\end{array} $$
+	\end{proof}
+	
+	
+	\setcounter{theorem}{39}
+	\begin{theorem}
+		Prove that \[
+		G=\left\{a+b\sqrt{2}:a,b\in\mathbb{Q}\text{ and $a$ and $b$ are both not $0$} \right\}
+		\] is a sub-group of $\R^*$ under the group operation of multiplication. 
+	\end{theorem}
+	\begin{proof}
+		By theorem from class, for $G\subseteq \R^*$ to be a sub-group of $\R^*$, it is sufficient to show \begin{enumerate}
+			\item For all $h_1,h_2\in G$, $h_1\cdot h_2\in G$.
+			
+			\item There exists $e\in G$ such that $h_1\cdot e=h_1=e\cdot h_1$ for all $h_1\in G$. 
+			
+			\item For all $h_1\in G$ there exists $\inv{h_1}\in G$ such that $h_1\cdot\inv{h_1}=e=\inv{h_1}\cdot h_1$.
+			
+			\setcounter{enumi}{0}
+			
+			\item To show $G$ is closed, take $h_1,h_2\in G$. Clearly $h_1\not=0$ and $h_2\not=0$ so $h_1\cdot h_2\not=0$. So \begin{dmath*}
+				h_1\cdot h_2 = \left(a_1+b_1\sqrt{2}\right)\cdot\left(a_2+b_2\sqrt{2}\right)=a_1a_2+a_1b_2\sqrt{2}+b_1a_2\sqrt{2}+2b_1b_2 \condition[]{by the distributive property} = \left(a_1a_2+2b_1b_2\right)+\left(a_1b_2+b_1a_2\right)\sqrt{2} \condition[]{by distributive, associative laws}
+			\end{dmath*} and $\left[\left(a_1a_2+2b_1b_2\right)+\left(a_1b_2+b_1a_2\right)\sqrt{2}\right]\in G$.
+			
+			\item To show the multiplicative identity is in $G$, take $a=1$ and $b=0$. Then $1+0\sqrt{2}\in G$ and $1+0\sqrt{2}=1$ and $1$ is the multiplicative identity in $\R^*$. 
+			
+			\item To show that each element in $G$ has an inverse, given $h_1=a+b\sqrt{2}$ its inverse is given by $\inv{h_1}=\frac{a}{a^2-2b^2}-\frac{b}{a^2-2b^2}\sqrt{2}$ as \begin{dmath*}
+				h_1\cdot \inv{h_1}\hiderel{ = }\inv{h_1}\cdot h_1 \condition[]{because multiplication is commutative in $\R^*$}\\ \inv{h_1}\cdot h_1 = \left(\frac{a}{a^2-2b^2}-\frac{b}{a^2-2b^2}\sqrt{2}\right)\left(a+b\sqrt{2}\right) = \left(\frac{a-b\sqrt{2}}{a^2-2b^2}\right)\left(a+b\sqrt{2}\right) = \frac{a^2-ab\sqrt{2}}{a^2-2b^2}+\frac{ab\sqrt{2}-2b^2}{a^2-2b^2} \condition[]{by distributive law} = \frac{a^2-2b^2}{a^2-2b^2}=1
+			\end{dmath*} and $1$ is the multiplicative identity. Notice that the inverse is well defined: $\inv{h_1} 
+			= \frac{a}{a^2-2b^2}-\frac{b}{a^2-2b^2}\sqrt{2}\not = 0$ as not both $a$ and $b$ are zero. Furthermore, the denominator is not zero as $a^2-2b^2=0\implies a=b\sqrt{2}$ which violates the assumption that $a,b\in\mathbb{Q}$. So $\left(\frac{a}{a^2-2b^2}-\frac{b}{a^2-2b^2}\sqrt{2}\right)\in G$ exists and is well defined.			
+		\end{enumerate} So we have shown that $G$ is a sub-group of $\R^*$ under multiplication. 
+	\end{proof}
+	
+	
+	\setcounter{theorem}{42}
+	\begin{theorem}
+		List the sub-groups of the quaternion group, $Q_8$. 
+	\end{theorem}
+	\begin{proof}
+		By definition, $Q_8:=\left\{\pm1,\pm I,\pm J,\pm K\right\}$ such that $I^2=J^2=K^2=-1$, $IJ=K$, $JK=I$, $KI=J$, $JI=-K$, $KJ=-I$ and  $IK=-J$. Then the sub-groups of $Q_8$ are $\left\langle1\right\rangle=\left\{1\right\}$, $\left\langle-1\right\rangle=\left\{-1,1\right\}$, $\left\langle I\right\rangle=\left\{I,-1,-I,1\right\}$, $\left\langle J\right\rangle=\left\{J,-1,-J,1\right\}$, $\left\langle K\right\rangle=\left\{K,-1,-K,1\right\}$, and $\left\langle Q_8\right\rangle=\left\{\pm1,\pm I,\pm J,\pm K\right\}$
+	\end{proof}
+	
+	
+	\begin{theorem}
+		Prove that the intersection of two sub-groups of a group $G$ is also a sub-group of $G$. 
+	\end{theorem}
+	\begin{proof}
+		Let $H_1,H_2\in G$ be sub-groups of $G$. Consider $H_1\cap H_2=\Gamma$.\\
+		By theorem from class, for $\Gamma\subseteq G$ to be a sub-group of $G$, it is sufficient to show \begin{enumerate}
+			\item For all $g_1,g_2\in \Gamma$, $g_1\circ g_2\in \Gamma$.
+			
+			\item There exists $e\in \Gamma$ such that $g_1\circ e=g_1=e\circ g_1$ for all $g_1\in \Gamma$. 
+			
+			\item For all $g_1\in \Gamma$ there exists $\inv{g_1}\in G$ such that $g_1\circ\inv{g_1}=e=\inv{g_1}\circ g_1$.
+			
+			\setcounter{enumi}{0}
+			
+			\item Let $g_1,g_2\in\Gamma$. Then $g_1,g_2\in H_1$ and $g_1,g_2\in H_2$ as $\Gamma=H_1\cap H_2$. Then $g_1\circ g_2\in H_1$ and $g_1\circ g_2\in H_2$ by the assumption that $H_1$ and $H_2$ are sub-groups of $G$.\\ $g_1\circ g_2\in H_1$ and $g_1\circ g_2\in H_2\implies g_1\circ g_2\in\Gamma$ by definition of $\Gamma$. So $g_1,g_2\in\Gamma\implies g_1\circ g_2\in\Gamma$. So $\Gamma$ is closed under $\circ$. 
+			
+			\item $e\in H_1$ and $e\in H_2$ by the assumption that $H_1$ and $H_2$ are sub-groups. Then $e\in\Gamma$ by definition of $\Gamma$. So $e\in\Gamma$. This also proves that $\Gamma\not=\emptyset$.
+			
+			\item Let $g_1\in\Gamma$. Then $g_1\in H_1$ and $g_1\in H_2$ by definition of $\Gamma$. Then $\inv{g_1}\in H_1$ and $\inv{g_1}\in H_2$ by assumption that $H_1$ and $H_2$ are sub-groups of $G$. So $\inv{g_1}\in H_1$ and $\inv{g_1}\in H_2\implies \inv{g_1}\in\Gamma$. So $g_1\in\Gamma\implies\inv{g_1}\in\Gamma$. 
+		\end{enumerate} So we have shown that $\Gamma$ is a sub-group of $G$ under $\circ$.
+	\end{proof}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
